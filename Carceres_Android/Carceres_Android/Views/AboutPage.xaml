@@ -26,6 +26,7 @@
                     <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
                 </ContentView>
             </StackLayout>
+            <Label Text=""/>
         </StackLayout>
     </Grid>
 
