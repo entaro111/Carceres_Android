@@ -1,4 +1,6 @@
 ﻿using Carceres_Android.Views;
+using RestSharp;
+using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,10 +32,17 @@ namespace Carceres_Android.ViewModels
 
         public async Task<string> Read()
         {
+            var client = new RestClient("http://10.0.2.2:43343");
+            client.Authenticator = new HttpBasicAuthenticator("admin", "carceres");
+            var request = new RestRequest("/api/login");
 
+            var response = client.Get(request);
+            string test = response.Content;
+            return test;
+            /*
             HttpClient client = new HttpClient();
             Uri uri = new Uri(string.Format("http://10.0.2.2:43343/api/login", string.Empty));
-
+            
             try
             {
                 HttpResponseMessage response = await client.GetAsync(uri);
@@ -48,7 +57,7 @@ namespace Carceres_Android.ViewModels
             }
 
             return text;
- 
+            */
         }
     }
 }
