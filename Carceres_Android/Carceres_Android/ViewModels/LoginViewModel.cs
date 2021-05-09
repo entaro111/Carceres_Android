@@ -1,4 +1,6 @@
-﻿using Carceres_Android.Views;
+﻿using Carceres_Android.Models;
+using Carceres_Android.Views;
+using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 using System;
@@ -7,6 +9,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels
@@ -32,12 +35,19 @@ namespace Carceres_Android.ViewModels
 
         public async Task<string> Read()
         {
+            string test = "";
             var client = new RestClient("http://10.0.2.2:43343");
             client.Authenticator = new HttpBasicAuthenticator("admin", "carceres");
             var request = new RestRequest("/api/login");
 
             var response = client.Get(request);
-            string test = response.Content;
+
+            if(response.ResponseStatus == ResponseStatus.Completed)
+            {
+                var authResponse = JsonConvert.DeserializeObject<AuthResponse>(response.Content);
+                Preferences.Set("BearerToken", authResponse.access_token);
+            }
+            
             return test;
             /*
             HttpClient client = new HttpClient();
