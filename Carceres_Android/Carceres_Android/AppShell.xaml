@@ -80,7 +80,7 @@
     -->
 
     <Shell.FlyoutHeader>
-        <Image Source="logo_carceres.png" Aspect="AspectFit" Margin="0,20,0,20"/>
+        <Image Source="logo_carceres.png" Scale="0.7"/>
     </Shell.FlyoutHeader>
     <FlyoutItem Title="Informacje">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
