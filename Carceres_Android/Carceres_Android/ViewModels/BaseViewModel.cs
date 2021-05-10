@@ -1,5 +1,6 @@
 ﻿using Carceres_Android.Models;
 using Carceres_Android.Services;
+using Carceres_Android.Services.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,8 @@ namespace Carceres_Android.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+
+        public IUsersList<User> UserList => DependencyService.Get<IUsersList<User>>();
 
         bool isBusy = false;
         public bool IsBusy
