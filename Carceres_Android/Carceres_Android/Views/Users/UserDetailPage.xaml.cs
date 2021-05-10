@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Carceres_Android.ViewModels.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,13 @@ using Xamarin.Forms.Xaml;
 
 namespace Carceres_Android.Views.Users
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class UserDetailPage : ContentPage
     {
         public UserDetailPage()
         {
             InitializeComponent();
+            BindingContext = new UserDetailViewModel();
         }
     }
 }

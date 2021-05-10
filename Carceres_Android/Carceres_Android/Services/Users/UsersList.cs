@@ -1,12 +1,11 @@
 ﻿using Carceres_Android.Models;
-using Carceres_Android.Services.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Carceres_Android.Services
+namespace Carceres_Android.Services.Users
 {
     public class UsersList : IUsersList<User>
     {
@@ -16,9 +15,9 @@ namespace Carceres_Android.Services
         {
             users = new List<User>()
             {
-                new User { id = Guid.NewGuid().ToString(), username = "Test1", user_type = "Administrator" },
-                new User { id = Guid.NewGuid().ToString(), username = "Test2", user_type = "Klient" },
-                new User { id = Guid.NewGuid().ToString(), username = "Test3", user_type = "Bot" }
+                new User { id = Guid.NewGuid().ToString(), username = "Test1", userType = "Administrator" },
+                new User { id = Guid.NewGuid().ToString(), username = "Test2", userType = "Klient" },
+                new User { id = Guid.NewGuid().ToString(), username = "Test3", userType = "Bot" }
             };
         }
         public async Task<bool> AddUserAsync(User user)

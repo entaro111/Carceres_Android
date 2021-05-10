@@ -9,7 +9,7 @@ namespace Carceres_Android.ViewModels.Users
     [QueryProperty(nameof(UserId),nameof(UserId))]
     public class UserDetailViewModel : BaseViewModel
     {
-        private string userdId;
+        private string userId;
         private string username;
         private string user_type;
 
@@ -31,11 +31,11 @@ namespace Carceres_Android.ViewModels.Users
         {
             get
             {
-                return UserId;
+                return userId;
             }
             set
             {
-                UserId = value;
+                userId = value;
                 LoadUserId(value);
             }
         }
@@ -46,7 +46,7 @@ namespace Carceres_Android.ViewModels.Users
                 var user = await UserList.GetUserAsync(userId);
                 Id = user.id;
                 Username = user.username;
-                UserType = user.user_type;
+                UserType = user.userType;
             }
             catch (Exception)
             {

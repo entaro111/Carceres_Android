@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:Carceres_Android.Views"
+       xmlns:localUsers ="clr-namespace:Carceres_Android.Views.Users"
        Title="Carceres_Android"
        x:Class="Carceres_Android.AppShell"
        FlyoutBackgroundColor="{StaticResource Primary}">
@@ -86,7 +87,7 @@
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Użytkownicy">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:UserPage}" />
+        <ShellContent Route="UsersPage" ContentTemplate="{DataTemplate localUsers:UsersPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Klienci">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />

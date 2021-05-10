@@ -1,4 +1,5 @@
 ﻿using Carceres_Android.Services;
+using Carceres_Android.Services.Users;
 using Carceres_Android.Views;
 using System;
 using Xamarin.Forms;
@@ -14,6 +15,7 @@ namespace Carceres_Android
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            DependencyService.Register<UsersList>();
             MainPage = new AppShell();
         }
 

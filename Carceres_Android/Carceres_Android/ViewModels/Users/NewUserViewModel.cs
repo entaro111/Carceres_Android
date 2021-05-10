@@ -51,7 +51,7 @@ namespace Carceres_Android.ViewModels.Users
             {
                 id = Guid.NewGuid().ToString(),
                 username = username,
-                user_type = UserType
+                userType = UserType
             };
             await UserList.AddUserAsync(newUser);
             await Shell.Current.GoToAsync("..");

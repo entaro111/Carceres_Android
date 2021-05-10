@@ -1,5 +1,4 @@
 ﻿using Carceres_Android.Models;
-using Carceres_Android.ViewModels.Users;
 using Carceres_Android.Views.Users;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Carceres_Android.ViewModels
+namespace Carceres_Android.ViewModels.Users
 {
     public class UsersViewModel : BaseViewModel
     {

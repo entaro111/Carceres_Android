@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Carceres_Android.Views.Users.UsersPage"
              Title="{Binding Title}"
-             xmlns:local="clr-namespace:Carceres_Android.ViewModels"
+             xmlns:local="clr-namespace:Carceres_Android.ViewModels.Users"
              xmlns:model="clr-namespace:Carceres_Android.Models"  
              x:Name="BrowseUserPage">
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddUserCommand}"/>
     </ContentPage.ToolbarItems>
@@ -17,7 +18,7 @@
                     <StackLayout Padding="10" x:DataType="model:User">
                         <Label Text="{Binding username}" LineBreakMode="NoWrap" 
                                Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                        <Label Text="{Binding user_type}" LineBreakMode="NoWrap" 
+                        <Label Text="{Binding userType}" LineBreakMode="NoWrap" 
                                Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1"
