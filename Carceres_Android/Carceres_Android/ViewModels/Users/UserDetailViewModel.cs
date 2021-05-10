@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Users
@@ -11,7 +9,7 @@ namespace Carceres_Android.ViewModels.Users
     {
         private string userId;
         private string username;
-        private string user_type;
+        private string userType;
 
         public string Id { get; set; }
 
@@ -23,8 +21,8 @@ namespace Carceres_Android.ViewModels.Users
 
         public string UserType
         {
-            get => user_type;
-            set => SetProperty(ref user_type, value);
+            get => userType;
+            set => SetProperty(ref userType, value);
         }
 
         public string UserId

@@ -3,6 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:Carceres_Android.Views"
        xmlns:localUsers ="clr-namespace:Carceres_Android.Views.Users"
+       xmlns:localCars ="clr-namespace:Carceres_Android.Views.Cars"
        Title="Carceres_Android"
        x:Class="Carceres_Android.AppShell"
        FlyoutBackgroundColor="{StaticResource Primary}">
@@ -93,7 +94,7 @@
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Samochody">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="CarsPage" ContentTemplate="{DataTemplate localCars:CarsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Rezerwacje">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />

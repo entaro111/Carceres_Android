@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace Carceres_Android.ViewModels.Users
+namespace Carceres_Android.ViewModels.Cars
 {
-    public class NewUserViewModel : BaseViewModel
+   public class NewCarViewModel : BaseViewModel
     {
-        private string username;
-        private string userType;
+        private string plate;
+        private string brand;
 
-        public NewUserViewModel()
+        public NewCarViewModel()
         {
             SaveCommand = new Command(OnSave, ValidateState);
             CancelCommand = new Command(OnCancel);
@@ -21,19 +21,19 @@ namespace Carceres_Android.ViewModels.Users
 
         private bool ValidateState()
         {
-            return !String.IsNullOrWhiteSpace(username) && !String.IsNullOrWhiteSpace(userType);
+            return !String.IsNullOrWhiteSpace(plate) && !String.IsNullOrWhiteSpace(brand);
         }
 
-        public string Username
+        public string Plate
         {
-            get => username;
-            set => SetProperty(ref username, value);
+            get => plate;
+            set => SetProperty(ref plate, value);
         }
 
-        public string UserType
+        public string Brand
         {
-            get => userType;
-            set => SetProperty(ref userType, value);
+            get => brand;
+            set => SetProperty(ref brand, value);
         }
 
         public Command SaveCommand { get; }
@@ -47,15 +47,15 @@ namespace Carceres_Android.ViewModels.Users
 
         private async void OnSave()
         {
-            User newUser = new User()
+            Car newCar = new Car()
             {
                 id = Guid.NewGuid().ToString(),
-                username = Username,
-                userType = UserType
+                plate = Plate,
+                brand = Brand
             };
-            await UserList.AddUserAsync(newUser);
+            await CarsList.AddCarAsync(newCar);
             await Shell.Current.GoToAsync("..");
-            
+
         }
     }
 }
