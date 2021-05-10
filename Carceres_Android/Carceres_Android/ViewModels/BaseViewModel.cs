@@ -24,6 +24,11 @@ namespace Carceres_Android.ViewModels
             set { SetProperty(ref isBusy, value); }
         }
 
+        public bool IsNotBusy
+        {
+            get { return !IsBusy; }
+        }
+
         string title = string.Empty;
         public string Title
         {

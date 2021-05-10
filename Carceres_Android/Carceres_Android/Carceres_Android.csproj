@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
@@ -31,5 +32,17 @@
     <EmbeddedResource Update="Views\Users\UsersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Clients\" />
+    <Folder Include="Services\Reservations\" />
+    <Folder Include="Services\Payments\" />
+    <Folder Include="ViewModels\Clients\" />
+    <Folder Include="ViewModels\Reservations\" />
+    <Folder Include="ViewModels\Payments\" />
+    <Folder Include="Views\Clients\" />
+    <Folder Include="Views\Reservations\" />
+    <Folder Include="Views\Payments\" />
   </ItemGroup>
 </Project>

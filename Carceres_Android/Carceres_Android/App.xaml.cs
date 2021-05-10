@@ -1,4 +1,5 @@
 ﻿using Carceres_Android.Services;
+using Carceres_Android.Services.API;
 using Carceres_Android.Services.Cars;
 using Carceres_Android.Services.Users;
 using Carceres_Android.Views;
@@ -18,6 +19,7 @@ namespace Carceres_Android
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<UsersList>();
             DependencyService.Register<CarsList>();
+            DependencyService.Register<IRestService, RestService>();
             MainPage = new AppShell();
         }
 

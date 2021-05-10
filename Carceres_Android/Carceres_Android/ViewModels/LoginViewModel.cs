@@ -1,4 +1,5 @@
 ﻿using Carceres_Android.Models;
+using Carceres_Android.Services.API;
 using Carceres_Android.Views;
 using Newtonsoft.Json;
 using RestSharp;
@@ -16,8 +17,11 @@ namespace Carceres_Android.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        private string username = "admin";
+        private string password = "carceres";
         public Command LoginCommand { get; }
-        string text;
+
+        public IRestService RestService => DependencyService.Get<IRestService>();
 
         public LoginViewModel()
         {
@@ -25,14 +29,49 @@ namespace Carceres_Android.ViewModels
             
         }
 
-        private async void OnLoginClicked(object obj)
+        public string Username
         {
-            text = await Read();
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            get => username;
+            set => SetProperty(ref username, value);
+        }
+        public string Password
+        {
+            get => password;
+            set => SetProperty(ref password, value);
         }
 
+        private async void OnLoginClicked(object obj)
+        {
+            {
 
+                try
+                {
+                    IsBusy = true;
+
+                    var response = await RestService.AuthWithCredentialsAsync(Username, Password);
+
+                    if (response.Success)
+                    {
+                        await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("error", "Invalid Credentials", "CANCEL");
+                    }
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+
+            }
+        }
+        /*
         public async Task<string> Read()
         {
             string test = "";
@@ -67,7 +106,8 @@ namespace Carceres_Android.ViewModels
             }
 
             return text;
-            */
+            
         }
+        */
     }
 }
