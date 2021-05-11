@@ -1,6 +1,7 @@
 ﻿using Carceres_Android.ViewModels;
 using Carceres_Android.Views;
 using Carceres_Android.Views.Cars;
+using Carceres_Android.Views.Clients;
 using Carceres_Android.Views.Users;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace Carceres_Android
             Routing.RegisterRoute(nameof(NewUserPage), typeof(NewUserPage));
             Routing.RegisterRoute(nameof(CarDetailPage), typeof(CarDetailPage));
             Routing.RegisterRoute(nameof(NewCarPage), typeof(NewCarPage));
+            Routing.RegisterRoute(nameof(ClientDetailPage), typeof(ClientDetailPage));
+            Routing.RegisterRoute(nameof(NewClientPage), typeof(NewClientPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

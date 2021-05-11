@@ -23,6 +23,15 @@
     <EmbeddedResource Update="Views\Cars\NewCarPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Clients\ClientDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Clients\ClientsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Clients\NewClientPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Users\NewUserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -35,13 +44,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Clients\" />
     <Folder Include="Services\Reservations\" />
     <Folder Include="Services\Payments\" />
-    <Folder Include="ViewModels\Clients\" />
     <Folder Include="ViewModels\Reservations\" />
     <Folder Include="ViewModels\Payments\" />
-    <Folder Include="Views\Clients\" />
     <Folder Include="Views\Reservations\" />
     <Folder Include="Views\Payments\" />
   </ItemGroup>
