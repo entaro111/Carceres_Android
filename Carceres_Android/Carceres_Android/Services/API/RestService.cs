@@ -72,7 +72,7 @@ namespace Carceres_Android.Services.API
                 var authResponse = JsonConvert.DeserializeObject<AuthResponse>(stringResponse);
                 authResponse.Success = true;
                 Preferences.Set("BearerToken", authResponse.access_token);
-                Preferences.Set("RefreshToken", authResponse.RefreshToken);
+                Preferences.Set("RefreshToken", authResponse.refresh_token);
 
                 return authResponse;
             }
@@ -81,10 +81,6 @@ namespace Carceres_Android.Services.API
                 return new AuthResponse();
             }
         }
-
-
-
-
 
         private async Task<bool> TryAuthWithRefreshTokenAsync()
         {
@@ -127,16 +123,11 @@ namespace Carceres_Android.Services.API
 
         private async Task<AuthResponse> AuthWithRefreshTokenAsync()
         {
-            string token = Preferences.Get("BearerToken", string.Empty);
-            httpClient.DefaultRequestHeaders.Add("x-access-tokens", token);
+           
             dynamic jsonObject = new JObject();
-            jsonObject.RefreshToken = Preferences.Get("BearerToken", string.Empty);
-
-          //  httpClient.DefaultRequestHeaders.Add("Accept", token);
-          //  httpClient.DefaultRequestHeaders.Add("Content-Type", token);
-            // httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            // var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
-            var responseMessage = await httpClient.GetAsync(REFRESH_TOKEN_URL);
+            jsonObject.RefreshToken = Preferences.Get("RefreshToken", string.Empty);
+            var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
+            var responseMessage = await httpClient.PostAsync(REFRESH_TOKEN_URL, content);
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -144,7 +135,7 @@ namespace Carceres_Android.Services.API
                 var authResponse = JsonConvert.DeserializeObject<AuthResponse>(stringResponse);
 
                 Preferences.Set("BearerToken", authResponse.access_token);
-                Preferences.Set("RefreshToken", authResponse.RefreshToken);
+                Preferences.Set("RefreshToken", authResponse.refresh_token);
 
                 return authResponse;
             }

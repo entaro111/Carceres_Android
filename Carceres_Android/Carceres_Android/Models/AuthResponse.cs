@@ -9,7 +9,7 @@ namespace Carceres_Android.Models
         public AuthResponse() { }
 
         public string access_token { get; set; }
-        public string RefreshToken { get; set; }
+        public string refresh_token { get; set; }
         public bool Success { get; set; }
     }
 }
