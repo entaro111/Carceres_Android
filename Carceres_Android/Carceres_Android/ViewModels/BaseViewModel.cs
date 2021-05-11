@@ -13,7 +13,6 @@ namespace Carceres_Android.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
         public IUsersList<User> UserList => DependencyService.Get<IUsersList<User>>();
        // public ICarsList<Car> CarsList => DependencyService.Get<ICarsList<Car>>();
 
@@ -21,7 +20,11 @@ namespace Carceres_Android.ViewModels
         public bool IsBusy
         {
             get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            set 
+            {
+                SetProperty(ref isBusy, value);
+                SetProperty(ref isBusy, value, nameof(IsNotBusy)); 
+            }
         }
 
         public bool IsNotBusy
