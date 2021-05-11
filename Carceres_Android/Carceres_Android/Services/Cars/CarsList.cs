@@ -15,7 +15,7 @@ namespace Carceres_Android.Services.Cars
 
         private const string URL = "http://10.0.2.2:43343/api/cars";
         public IRestService RestService => DependencyService.Get<IRestService>();
-        public List<Car> Cars { get; private set; }
+        //public List<Car> Cars { get; private set; }
         public CarsList()
         {
         }

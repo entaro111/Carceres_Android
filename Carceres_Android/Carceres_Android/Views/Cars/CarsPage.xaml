@@ -8,8 +8,8 @@
              x:Name="BrowseUserPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddCarCommand}"/>
-        <ToolbarItem Text="Refresh" Command="{Binding LoadCarsCommand}" />
+        <ToolbarItem Text="Dodaj" Command="{Binding AddCarCommand}"/>
+        
     </ContentPage.ToolbarItems>
 
     <RefreshView x:DataType="local:CarsViewModel" Command="{Binding LoadCarsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">

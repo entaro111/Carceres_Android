@@ -28,9 +28,9 @@ namespace Carceres_Android.ViewModels.Cars
         private async void ExecuteLoadCarsCommand(object obj)
         {
             IsBusy = true;
-
             try
             {
+                
                 Cars.Clear();
 
                 var task1 = CarsService.GetCarsAsync();
