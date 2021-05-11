@@ -8,6 +8,7 @@ namespace Carceres_Android.ViewModels.Cars
 {
    public class NewCarViewModel : BaseViewModel
     {
+        /*
         private string plate;
         private string brand;
 
@@ -44,7 +45,7 @@ namespace Carceres_Android.ViewModels.Cars
         {
             await Shell.Current.GoToAsync("..");
         }
-
+        /*
         private async void OnSave()
         {
             Car newCar = new Car()
@@ -57,5 +58,6 @@ namespace Carceres_Android.ViewModels.Cars
             await Shell.Current.GoToAsync("..");
 
         }
+        */
     }
 }

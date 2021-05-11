@@ -17,8 +17,8 @@ namespace Carceres_Android.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private string username = "admin";
-        private string password = "carceres";
+        private string username = "";
+        private string password = "";
         public Command LoginCommand { get; }
 
         public IRestService RestService => DependencyService.Get<IRestService>();
@@ -26,7 +26,7 @@ namespace Carceres_Android.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLoginClicked);
-            
+
         }
 
         public string Username
@@ -71,43 +71,6 @@ namespace Carceres_Android.ViewModels
 
             }
         }
-        /*
-        public async Task<string> Read()
-        {
-            string test = "";
-            var client = new RestClient("http://10.0.2.2:43343");
-            client.Authenticator = new HttpBasicAuthenticator("admin", "carceres");
-            var request = new RestRequest("/api/login");
 
-            var response = client.Get(request);
-
-            if(response.ResponseStatus == ResponseStatus.Completed)
-            {
-                var authResponse = JsonConvert.DeserializeObject<AuthResponse>(response.Content);
-                Preferences.Set("BearerToken", authResponse.access_token);
-            }
-            
-            return test;
-            /*
-            HttpClient client = new HttpClient();
-            Uri uri = new Uri(string.Format("http://10.0.2.2:43343/api/login", string.Empty));
-            
-            try
-            {
-                HttpResponseMessage response = await client.GetAsync(uri);
-                if (response.IsSuccessStatusCode)
-                {
-                    string content = await response.Content.ReadAsStringAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"\tERROR {0}", ex.Message);
-            }
-
-            return text;
-            
-        }
-        */
     }
 }

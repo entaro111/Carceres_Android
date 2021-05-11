@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -61,9 +62,6 @@ namespace Carceres_Android.Services.API
 
         public async Task<AuthResponse> AuthWithCredentialsAsync(string username, string password)
         {
-            dynamic jsonObject = new JObject();
-            jsonObject.Username = username;
-            jsonObject.Password = password;
             HttpClientHandler handler = new HttpClientHandler();
             var byteArray = Encoding.ASCII.GetBytes(string.Format("{0}:{1}", username, password));
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
@@ -129,11 +127,16 @@ namespace Carceres_Android.Services.API
 
         private async Task<AuthResponse> AuthWithRefreshTokenAsync()
         {
+            string token = Preferences.Get("BearerToken", string.Empty);
+            httpClient.DefaultRequestHeaders.Add("x-access-tokens", token);
             dynamic jsonObject = new JObject();
-            jsonObject.RefreshToken = Preferences.Get("RefreshToken", string.Empty);
+            jsonObject.RefreshToken = Preferences.Get("BearerToken", string.Empty);
 
-            var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
-            var responseMessage = await httpClient.PostAsync(REFRESH_TOKEN_URL, content);
+          //  httpClient.DefaultRequestHeaders.Add("Accept", token);
+          //  httpClient.DefaultRequestHeaders.Add("Content-Type", token);
+            // httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            // var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
+            var responseMessage = await httpClient.GetAsync(REFRESH_TOKEN_URL);
 
             if (responseMessage.IsSuccessStatusCode)
             {

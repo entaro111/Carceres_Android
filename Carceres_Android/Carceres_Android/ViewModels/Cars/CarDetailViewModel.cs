@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Carceres_Android.Models;
+using Carceres_Android.Services.Cars;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Cars
 {
+
     [QueryProperty(nameof(CarId), nameof(CarId))]
     public class CarDetailViewModel : BaseViewModel
     {
@@ -13,7 +17,7 @@ namespace Carceres_Android.ViewModels.Cars
         private string plate;
         private string brand;
 
-        public string Id { get; set; }
+        //public string Id { get; set; }
 
         public string Plate
         {
@@ -26,19 +30,13 @@ namespace Carceres_Android.ViewModels.Cars
             get => brand;
             set => SetProperty(ref brand, value);
         }
-
+        
         public string CarId
         {
-            get
-            {
-                return carId;
-            }
-            set
-            {
-                carId = value;
-                LoadCarId(value);
-            }
+            get => carId;
+            set => SetProperty(ref carId, value);
         }
+        /*
         public async void LoadCarId(string userId)
         {
             try
@@ -53,5 +51,7 @@ namespace Carceres_Android.ViewModels.Cars
                 Debug.WriteLine("Failed to Load User");
             }
         }
+        */
     }
+
 }

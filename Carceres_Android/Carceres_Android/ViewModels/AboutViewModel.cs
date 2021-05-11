@@ -13,11 +13,8 @@ namespace Carceres_Android.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "Test";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+            Title = "Carceres";
+            
         }
-
-        public ICommand OpenWebCommand { get;}
-
     }
 }
