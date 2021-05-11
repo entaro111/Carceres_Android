@@ -8,7 +8,7 @@ namespace Carceres_Android.Services.Cars
 {
     public interface ICarsList
     {
-        Task<IEnumerable<Car>> GetCarsAsync();
+        Task<IList<Car>> GetCarsAsync();
         /*
         Task<bool> AddCarAsync(T car);
         Task<bool> UpdateCarAsync(T car);

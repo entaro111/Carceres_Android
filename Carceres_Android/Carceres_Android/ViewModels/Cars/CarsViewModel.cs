@@ -34,11 +34,8 @@ namespace Carceres_Android.ViewModels.Cars
                 Cars.Clear();
 
                 var task1 = CarsService.GetCarsAsync();
-                var task2 = CarsService.GetCarsAsync();
-                var task3 = CarsService.GetCarsAsync();
-                var task4 = CarsService.GetCarsAsync();
 
-                foreach (var car in await task2)
+                foreach (var car in await task1)
                 {
                     Cars.Add(car);
                 }
