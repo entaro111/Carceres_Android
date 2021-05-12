@@ -20,6 +20,36 @@ namespace Carceres_Android.Services.Cars
         {
         }
 
+        public Task<Car> GetCarAsync(string id)
+        {
+            return RestService.ExecuteWithRetryAsync(async () =>
+            {
+                using (var client = new HttpClient())
+                {
+                    string URL1 = "http://10.0.2.2:43343/api/cars/" + id;
+                    client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
+
+                    var responseMessage = await client.GetAsync(URL1);
+
+                    responseMessage.EnsureSuccessStatusCode();
+
+                    var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
+
+                    //JObject response = JObject.Parse(jsonResponse);
+
+                    //IList<JToken> results = response["results"].Children().ToList();
+                    //IList<Car> Cars = new List<Car>();
+                    //foreach (JToken result in results)
+                    //{
+                    //    Car car = result.ToObject<Car>();
+                    //    Cars.Add(car);
+                    //}
+                    var response = JsonConvert.DeserializeObject<Car>(jsonResponse);
+                    return response;
+                }
+            });
+
+        }
         public Task<IList<Car>> GetCarsAsync()
         {
             return RestService.ExecuteWithRetryAsync(async () =>

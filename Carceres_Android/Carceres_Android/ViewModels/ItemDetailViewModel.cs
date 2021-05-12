@@ -1,7 +1,5 @@
-﻿using Carceres_Android.Models;
-using System;
+﻿using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels

@@ -1,10 +1,5 @@
-﻿using Carceres_Android.Models;
-using Carceres_Android.Services.Cars;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System;
 using System.Diagnostics;
-using System.Text;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Cars
@@ -17,7 +12,7 @@ namespace Carceres_Android.ViewModels.Cars
         private string plate;
         private string brand;
 
-        //public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Plate
         {
@@ -31,13 +26,23 @@ namespace Carceres_Android.ViewModels.Cars
             set => SetProperty(ref brand, value);
         }
         
+        //public string CarId
+        //{
+        //    get => carId;
+        //    set => SetProperty(ref carId, value);
+        //}
+        
         public string CarId
         {
-            get => carId;
-            set => SetProperty(ref carId, value);
+            get { return carId; }
+            set
+            {
+                carId = value;
+                LoadCarId(value);
+            }
         }
-        /*
-        public async void LoadCarId(string userId)
+
+        public async void LoadCarId(string carId)
         {
             try
             {
@@ -51,7 +56,7 @@ namespace Carceres_Android.ViewModels.Cars
                 Debug.WriteLine("Failed to Load User");
             }
         }
-        */
+        
     }
 
 }

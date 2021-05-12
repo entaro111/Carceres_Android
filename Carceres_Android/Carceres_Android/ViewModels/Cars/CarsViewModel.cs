@@ -1,5 +1,6 @@
 ﻿using Carceres_Android.Models;
 using Carceres_Android.Services.Cars;
+using Carceres_Android.Views.Cars;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -9,9 +10,11 @@ namespace Carceres_Android.ViewModels.Cars
 {
     public class CarsViewModel : BaseViewModel
     {
+        private Car _selectedCar;
         public ObservableCollection<Car> Cars { get; }
         public Command LoadCarsCommand { get; }
 
+        public Command<Car> CarTapped { get; }
         public ICarsList CarsService => DependencyService.Get<ICarsList>();
 
         public CarsViewModel()
@@ -19,7 +22,7 @@ namespace Carceres_Android.ViewModels.Cars
             Title = "Samochody";
             Cars = new ObservableCollection<Car>();
             LoadCarsCommand = new Command(ExecuteLoadCarsCommand);
-
+            CarTapped = new Command<Car>(OnCarSelected);
 
         }
 
@@ -50,7 +53,26 @@ namespace Carceres_Android.ViewModels.Cars
         public void OnAppearing()
         {
             IsBusy = true;
+            SelectedCar = null;
         }
-        
+
+        public Car SelectedCar
+        {
+            get => _selectedCar;
+            set
+            {
+                SetProperty(ref _selectedCar, value);
+                OnCarSelected(value);
+            }
+        }
+
+        async void OnCarSelected(Car car)
+        {
+            if (car == null)
+                return;
+
+            // This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(CarDetailPage)}?{nameof(CarDetailViewModel.CarId)}={car.id}");
+        }
     }
 }

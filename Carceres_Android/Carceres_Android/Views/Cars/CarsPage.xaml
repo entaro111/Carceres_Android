@@ -5,7 +5,7 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Carceres_Android.ViewModels.Cars"
              xmlns:model="clr-namespace:Carceres_Android.Models"  
-             x:Name="BrowseUserPage">
+             x:Name="BrowseCarsPage">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Dodaj" Command="{Binding AddCarCommand}"/>
