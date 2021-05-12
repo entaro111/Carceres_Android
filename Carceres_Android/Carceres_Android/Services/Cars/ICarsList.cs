@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Carceres_Android.Services.Cars
 {
-    public interface ICarsList
+    public interface ICarsList<T>
     {
-        Task<Car> GetCarAsync(string id);
-        Task<IList<Car>> GetCarsAsync();
-
+        Task<T> GetCarAsync(string id);
+        Task<IList<T>> GetCarsAsync();
+        Task<bool> AddCarAsync(T car);
     }
 }

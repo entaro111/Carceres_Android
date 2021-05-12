@@ -11,6 +11,9 @@
             <Label Text="Marka:" FontSize="Medium" />
             <Editor Text="{Binding Brand, Mode=TwoWay}" 
                     AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+            <Label Text="ID Klienta:" FontSize="Medium" />
+            <Editor Text="{Binding ClientId, Mode=TwoWay}" 
+                    AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>

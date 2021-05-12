@@ -13,8 +13,6 @@ namespace Carceres_Android.Services.API
 {
     public class RestService : IRestService
     {
-        
-
         public RestService() { }
 
         public HttpClient httpClient = new HttpClient();
@@ -86,13 +84,10 @@ namespace Carceres_Android.Services.API
         {
             try
             {
-                //Tenta executar o refreshtoken apenas da primeira thread que solicitou...
-                //Para as demais threads, faz com que elas aguardem pela renovacao do token.
                 if (Interlocked.CompareExchange(ref _refreshTokenEntered, 1, 0) == 0)
                 {
 
                     Console.WriteLine("Refresh Token Renewing...");
-                    //tenta renovar
                     var authResponse = await AuthWithRefreshTokenAsync();
 
                     Interlocked.Exchange(ref _refreshTokenEntered, 0);
@@ -107,7 +102,6 @@ namespace Carceres_Android.Services.API
                     {
                         await Task.Delay(100);
                     }
-                    //Faz as outras threads aguardarem até que o token seja renovado no bloco anterior
                     Console.WriteLine("Refresh Token Renewal done!");
                     return true;
                 }

@@ -14,7 +14,7 @@ namespace Carceres_Android.ViewModels
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
         public IUsersList<User> UserList => DependencyService.Get<IUsersList<User>>();
-        public ICarsList CarsList => DependencyService.Get<ICarsList>();
+        public ICarsList<Car> CarsList => DependencyService.Get<ICarsList<Car>>();
 
         bool isBusy = false;
         public bool IsBusy

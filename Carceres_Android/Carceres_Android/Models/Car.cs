@@ -10,7 +10,7 @@ namespace Carceres_Android.Models
         {
 
         }
-        public int id { get; set; }
+        public int? id { get; set; }
         public string plate { get; set; }
         public string brand { get; set; }
         public int client_id { get; set; }
