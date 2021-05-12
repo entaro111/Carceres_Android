@@ -32,6 +32,24 @@
     <EmbeddedResource Update="Views\Clients\NewClientPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Payments\NewPaymentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Payments\PaymentDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Payments\PaymentsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Reservations\NewReservationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Reservations\ReservationDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Reservations\ReservationsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Users\NewUserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -44,11 +62,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Reservations\" />
-    <Folder Include="Services\Payments\" />
-    <Folder Include="ViewModels\Reservations\" />
-    <Folder Include="ViewModels\Payments\" />
-    <Folder Include="Views\Reservations\" />
-    <Folder Include="Views\Payments\" />
+    <Compile Update="Views\Payments\PaymentDetailPage.xaml.cs">
+      <DependentUpon>PaymentDetailPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

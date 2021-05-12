@@ -5,6 +5,8 @@
        xmlns:localUsers ="clr-namespace:Carceres_Android.Views.Users"
        xmlns:localCars ="clr-namespace:Carceres_Android.Views.Cars"
        xmlns:localClients ="clr-namespace:Carceres_Android.Views.Clients"
+       xmlns:localPayments ="clr-namespace:Carceres_Android.Views.Payments"
+       xmlns:localReservations ="clr-namespace:Carceres_Android.Views.Reservations"
        Title="Carceres_Android"
        x:Class="Carceres_Android.AppShell"
        FlyoutBackgroundColor="{StaticResource Primary}">
@@ -98,10 +100,10 @@
         <ShellContent Route="CarsPage" ContentTemplate="{DataTemplate localCars:CarsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Rezerwacje">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="ReservationsPage" ContentTemplate="{DataTemplate localReservations:ReservationsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Płatności">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="PaymentsPage" ContentTemplate="{DataTemplate localPayments:PaymentsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Moje rezerwacje">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />

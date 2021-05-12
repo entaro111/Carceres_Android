@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Carceres_Android.Views.Payments.NewPaymentPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="Nowa płatność">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15">
+            <Label Text="Data płatności:" FontSize="Medium" />
+            <Entry Text="{Binding PaidDate, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Wartość:" FontSize="Medium" />
+            <Editor Text="{Binding Value, Mode=TwoWay}" 
+                    AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

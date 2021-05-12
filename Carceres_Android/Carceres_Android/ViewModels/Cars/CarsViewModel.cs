@@ -9,8 +9,6 @@ namespace Carceres_Android.ViewModels.Cars
 {
     public class CarsViewModel : BaseViewModel
     {
-
-
         public ObservableCollection<Car> Cars { get; }
         public Command LoadCarsCommand { get; }
 

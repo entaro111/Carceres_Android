@@ -6,14 +6,14 @@ namespace Carceres_Android.Models
 {
     public class Payment
     {
-        public string id { get; set; }
-        public string paid_date { get; set; }
-        public string paid_type { get; set; }
-        public string paid { get; set; }
-        public string price { get; set; }
-        public string value { get; set; }
-        public string sale_date { get; set; }
-        public string subscription_id { get; set; }
-        public string tax { get; set; }
+        public int id { get; set; }
+        public DateTime paid_date { get; set; }
+        public int paid_type { get; set; }
+        public bool paid { get; set; }
+        public int price { get; set; }
+        public int value { get; set; }
+        public DateTime sale_date { get; set; }
+        public int subscription_id { get; set; }
+        public int tax { get; set; }
     }
 }

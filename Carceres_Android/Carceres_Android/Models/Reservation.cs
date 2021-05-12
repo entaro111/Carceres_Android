@@ -6,12 +6,12 @@ namespace Carceres_Android.Models
 {
     public class Reservation
     {
-        public string id { get; set; }
-        public string start { get; set; }
-        public string end { get; set; }
-        public string type { get; set; }
-        public string car_id { get; set; }
-        public string place_id { get; set; }
+        public int id { get; set; }
+        public DateTime start { get; set; }
+        public DateTime end { get; set; }
+        public int type { get; set; }
+        public int car_id { get; set; }
+        public int place_id { get; set; }
 
     }
 }

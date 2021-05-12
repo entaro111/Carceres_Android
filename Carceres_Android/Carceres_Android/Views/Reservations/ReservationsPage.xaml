@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Carceres_Android.Views.Reservations.ReservationsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Carceres_Android.ViewModels.Reservations"
+             xmlns:model="clr-namespace:Carceres_Android.Models"  
+             x:Name="BrowseReservationPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Dodaj" Command="{Binding AddReservationCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <RefreshView x:DataType="local:ReservationsViewModel" Command="{Binding LoadReservationsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name=" ReservationsListView" ItemsSource="{Binding Reservations}" SelectedItem="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:Reservation">
+                        <Label Text="{Binding start}" LineBreakMode="NoWrap" 
+                               Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                        <Label Text="{Binding end}" LineBreakMode="NoWrap" 
+                               Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                  Command="{Binding Source={RelativeSource AncestorType=
+                                {x:Type local:ReservationsViewModel}}, Path=CarTapped}" 
+                                                  CommandParameter="{Binding .}">
+
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

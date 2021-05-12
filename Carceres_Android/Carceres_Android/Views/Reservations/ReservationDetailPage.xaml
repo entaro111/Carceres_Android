@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Carceres_Android.Views.Reservations.ReservationDetailPage"
+             Title="{Binding Title}">
+
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Start:" FontSize="Medium" />
+        <Label Text="{Binding Start}" FontSize="Small"/>
+        <Label Text="Koniec:" FontSize="Medium" />
+        <Label Text="{Binding End}" FontSize="Small"/>
+    </StackLayout>
+</ContentPage>
