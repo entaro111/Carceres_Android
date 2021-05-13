@@ -10,6 +10,7 @@ namespace Carceres_Android.Services.Cars
     {
         Task<T> GetCarAsync(string id);
         Task<IList<T>> GetCarsAsync();
+        Task<bool> UpdateCarAsync(string id, T car);
         Task<bool> AddCarAsync(T car);
     }
 }

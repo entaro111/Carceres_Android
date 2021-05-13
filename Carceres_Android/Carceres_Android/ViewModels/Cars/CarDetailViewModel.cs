@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Carceres_Android.Views.Cars;
+using System;
 using System.Diagnostics;
 using Xamarin.Forms;
 
@@ -11,6 +12,13 @@ namespace Carceres_Android.ViewModels.Cars
         private string carId;
         private string plate;
         private string brand;
+
+        public Command UpdateCarCommand { get; }
+
+        public CarDetailViewModel()
+        {
+            UpdateCarCommand = new Command(OnUpdateCar);
+        }
 
         public int Id { get; set; }
 
@@ -56,7 +64,12 @@ namespace Carceres_Android.ViewModels.Cars
                 Debug.WriteLine("Failed to Load User");
             }
         }
-        
+
+        private async void OnUpdateCar(object obj)
+        {
+            await Shell.Current.GoToAsync($"{nameof(UpdateCarPage)}?{nameof(UpdateCarViewModel.CarId)}={carId}");
+        }
+
     }
 
 }

@@ -65,8 +65,7 @@ namespace Carceres_Android.Services.Cars
 
         public async Task<bool> AddCarAsync(Car car)
         {
-           // return RestService.ExecuteWithRetryAsync(async () =>
-          //  {
+
                 using (var client = new HttpClient())
                 {
                     string URL2 = "http://10.0.2.2:43343/api/cars";
@@ -78,8 +77,27 @@ namespace Carceres_Android.Services.Cars
                    var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
                     var response = JsonConvert.DeserializeObject<Car>(jsonResponse);
                     return await Task.FromResult(true);
-                    //return response;
+
                 };
+        }
+
+
+        public async Task<bool> UpdateCarAsync(string id, Car car)
+        {
+
+            using (var client = new HttpClient())
+            {
+                string URL3 = "http://10.0.2.2:43343/api/cars/" + id;
+                client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
+
+                var content = new StringContent(JsonConvert.SerializeObject(car), Encoding.UTF8, "application/json");
+                var responseMessage = await client.PutAsync(URL3, content);
+                responseMessage.EnsureSuccessStatusCode();
+                var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
+                var response = JsonConvert.DeserializeObject<Car>(jsonResponse);
+                return await Task.FromResult(true);
+
+            };
         }
     }
 }
