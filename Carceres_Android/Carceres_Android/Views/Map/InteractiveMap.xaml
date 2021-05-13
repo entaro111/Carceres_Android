@@ -4,13 +4,47 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Title="{Binding Title}"
              x:Class="Carceres_Android.Views.Map.InteractiveMap"
-             Shell.NavBarIsVisible="False">
-    
-    <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Image Source="mapa_parkingu_zone1.png" VerticalOptions="Center"/>
-            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"/>
+             xmlns:local="clr-namespace:Carceres_Android.ViewModels.Maps"
+             xmlns:model="clr-namespace:Carceres_Android.Models">
+
+    <RefreshView x:DataType="local:InteractiveMapsViewModel" Command="{Binding LoadZonesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <StackLayout>
+            <Picker Title="Wybierz strefę" ItemsSource="{Binding Zones}" ItemDisplayBinding="{Binding name}" 
+                    SelectedItem="{Binding SelectedZone}" HorizontalTextAlignment="Center"></Picker>
+            <Label Text="Tu zrobić trzeba info o strefie" Margin="0,20,0,0"/>
+            <Image Source="{Binding SelectedZone.bkg_file}" Margin="0,20,0,0"/>
         </StackLayout>
-    </ContentPage.Content>
+    </RefreshView>
+    
+    <!--
+    <RefreshView x:DataType="local:InteractiveMapsViewModel" Command="{Binding LoadZonesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <Picker x:Name="ZonesListView" SelectedIndex="1" ItemsSource="{Binding Zones}" ItemDisplayBinding="{Binding name}"/>
+
+
+          <CollectionView x:Name=" ZonesListView" ItemsSource="{Binding Zones}" SelectedItem="None">
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:Zone">
+                        <Label Text="{Binding name}" LineBreakMode="NoWrap" 
+                               Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                        <Label Text="{Binding id}" LineBreakMode="NoWrap" 
+                               Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13"/>
+                        
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                  Command="{Binding Source={RelativeSource AncestorType=
+                                {x:Type local:InteractiveMapsViewModel}}, Path=CarTapped}" 
+                                                  CommandParameter="{Binding .}">
+
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>  
+    </RefreshView>
+     -->
 </ContentPage>

@@ -2,6 +2,7 @@
 using Carceres_Android.Services.API;
 using Carceres_Android.Services.Cars;
 using Carceres_Android.Services.Clients;
+using Carceres_Android.Services.Maps;
 using Carceres_Android.Services.Payments;
 using Carceres_Android.Services.Reservations;
 using Carceres_Android.Services.Users;
@@ -25,6 +26,7 @@ namespace Carceres_Android
             DependencyService.Register<ClientsList>();
             DependencyService.Register<PaymentsList>();
             DependencyService.Register<ReservationsList>();
+            DependencyService.Register<MapsService>();
             DependencyService.Register<IRestService, RestService>();
             MainPage = new AppShell();
         }
