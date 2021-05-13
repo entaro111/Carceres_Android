@@ -12,7 +12,7 @@ namespace Carceres_Android.ViewModels.Cars
         private string plate;
         private string brand;
 
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         public string Plate
         {

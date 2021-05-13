@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -70,7 +71,9 @@ namespace Carceres_Android.Services.Cars
                 {
                     string URL2 = "http://10.0.2.2:43343/api/cars";
                     client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
-                    var responseMessage = await client.PostAsync(URL2, new StringContent(JsonConvert.SerializeObject(car)));
+                    
+                    var content = new StringContent(JsonConvert.SerializeObject(car), Encoding.UTF8, "application/json");
+                    var responseMessage = await client.PostAsync(URL2, content);
                     responseMessage.EnsureSuccessStatusCode();
                    var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
                     var response = JsonConvert.DeserializeObject<Car>(jsonResponse);

@@ -54,9 +54,11 @@ namespace Carceres_Android.ViewModels.Cars
         
         private async void OnSave()
         {
+
+
             Car newCar = new Car()
             {
-                
+
                 plate = Plate,
                 brand = Brand,
                 client_id = ClientId
