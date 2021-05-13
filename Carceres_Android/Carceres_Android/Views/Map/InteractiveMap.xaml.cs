@@ -15,7 +15,7 @@ namespace Carceres_Android.Views.Map
         public InteractiveMap()
         {
             InitializeComponent();
-            //this.BindingContext = new InteractiveMap();
+            BindingContext = new InteractiveMap();
         }
     }
 }
