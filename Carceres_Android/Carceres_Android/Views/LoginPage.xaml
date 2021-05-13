@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="Carceres_Android.Views.LoginPage"
              Shell.NavBarIsVisible="False">
+    
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Image Source="logo_carceres.png" VerticalOptions="Center"/>

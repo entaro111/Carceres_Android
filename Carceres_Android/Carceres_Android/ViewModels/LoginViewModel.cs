@@ -56,7 +56,7 @@ namespace Carceres_Android.ViewModels
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("error", "Invalid Credentials", "CANCEL");
+                        await Application.Current.MainPage.DisplayAlert("error", "Nieprawidłowe dane", "CANCEL");
                     }
 
                 }
