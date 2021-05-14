@@ -38,9 +38,8 @@ namespace Carceres_Android.Services.Maps
 
         }
         public async Task<IList<Zone>> GetZonesAsync()
-        {
-           // return RestService.ExecuteWithRetryAsync(async () =>
-           // {
+        {           
+            
                 using (var client = new HttpClient())
                 {
                     string URL = "http://10.0.2.2:43343/api/zones";
@@ -48,21 +47,18 @@ namespace Carceres_Android.Services.Maps
                     var responseMessage = await client.GetAsync(URL);
                     responseMessage.EnsureSuccessStatusCode();
                     var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
-                    JObject response = JObject.Parse(jsonResponse);
-                    IList<JToken> results = response["results"].Children().ToList();
-                    IList<Zone> Zones = new List<Zone>();
-                    foreach (JToken result in results)
-                    {
-                        Zone zone = result.ToObject<Zone>();
-                        Zones.Add(zone);
-                    }
-                    return Zones;
-                }
-          //  });
+                    dynamic response = JsonConvert.DeserializeObject(jsonResponse);
+                    List<Zone> Zones = response.results.ToObject<List<Zone>>();
 
+                return Zones;
+                }
         }
 
         /*
+         * 
+         * 
+            JObject ojObject = (JObject)response["results"];
+                            JArray array = (JArray)ojObject["places"];
         public async Task<bool> AddCarAsync(Zone zone)
         {
 

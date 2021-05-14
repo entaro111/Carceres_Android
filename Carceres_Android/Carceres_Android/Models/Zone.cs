@@ -11,7 +11,7 @@ namespace Carceres_Android.Models
 
         public string bkg_file { get; set; }
 
-        private class Place
+        public class Place
         {
             public int id { get; }
             public int nr { get; }
@@ -21,5 +21,10 @@ namespace Carceres_Android.Models
             public float pos_y { get; }
             public bool occupied { get; }
         }
+
+        public List<Place> places { get; set; }
+
+
+        //public Uri uri = new Uri("place");
     }
 }
