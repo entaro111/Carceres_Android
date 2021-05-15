@@ -37,7 +37,7 @@ namespace Carceres_Android.Services.Maps
             });
 
         }
-        public async Task<IList<Zone>> GetZonesAsync()
+        public async Task<List<Zone>> GetZonesAsync()
         {           
             
                 using (var client = new HttpClient())

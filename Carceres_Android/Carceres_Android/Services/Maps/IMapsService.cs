@@ -8,6 +8,6 @@ namespace Carceres_Android.Services.Maps
 {
     public interface IMapsService<T>
     {
-        Task<IList<T>> GetZonesAsync();
+        Task<List<T>> GetZonesAsync();
     }
 }

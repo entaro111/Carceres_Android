@@ -38,7 +38,7 @@ namespace Carceres_Android.Services.Cars
             });
 
         }
-        public Task<IList<Car>> GetCarsAsync()
+        public Task<List<Car>> GetCarsAsync()
         {
             return RestService.ExecuteWithRetryAsync(async () =>
             {
@@ -49,14 +49,8 @@ namespace Carceres_Android.Services.Cars
                     var responseMessage = await client.GetAsync(URL);
                     responseMessage.EnsureSuccessStatusCode();
                     var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
-                    JObject response = JObject.Parse(jsonResponse);
-                    IList<JToken> results = response["results"].Children().ToList();
-                    IList<Car> Cars = new List<Car>();
-                    foreach (JToken result in results)
-                    {
-                        Car car = result.ToObject<Car>();
-                        Cars.Add(car);
-                    }
+                    dynamic response = JsonConvert.DeserializeObject(jsonResponse);
+                    List<Car> Cars = response.results.ToObject<List<Car>>();
                     return Cars;
                 }
             });

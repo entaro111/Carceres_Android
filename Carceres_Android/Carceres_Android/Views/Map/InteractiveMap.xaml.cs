@@ -19,6 +19,7 @@ namespace Carceres_Android.Views.Map
         {
             InitializeComponent();
             BindingContext = _viewModel = new InteractiveMapsViewModel();
+            
         }
 
         protected override void OnAppearing()

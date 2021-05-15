@@ -13,39 +13,17 @@
         <StackLayout>
             <Picker Title="Wybierz strefę" ItemsSource="{Binding Zones}" ItemDisplayBinding="{Binding name}" 
                     SelectedItem="{Binding SelectedZone}" HorizontalTextAlignment="Center"></Picker>
-            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"/>
             <Label Text="Tu zrobić trzeba info o strefie" Margin="0,20,0,0"/>
-            <Image Source="{Binding SelectedZone.bkg_file}" Margin="0,20,0,0"/>
+            <AbsoluteLayout HorizontalOptions="Center">
+                <Image Source="{Binding SelectedZone.bkg_file}" Margin="0,20,0,0"/>
+                <AbsoluteLayout >
+                    
+
+                            <Image AbsoluteLayout.LayoutBounds="40, 100" Source="pin_green.png"/>
+
+
+                </AbsoluteLayout>
+            </AbsoluteLayout>
         </StackLayout>
     </RefreshView>
-    
-    <!--
-    <RefreshView x:DataType="local:InteractiveMapsViewModel" Command="{Binding LoadZonesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <Picker x:Name="ZonesListView" SelectedIndex="1" ItemsSource="{Binding Zones}" ItemDisplayBinding="{Binding name}"/>
-
-
-          <CollectionView x:Name=" ZonesListView" ItemsSource="{Binding Zones}" SelectedItem="None">
-            
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Zone">
-                        <Label Text="{Binding name}" LineBreakMode="NoWrap" 
-                               Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                        <Label Text="{Binding id}" LineBreakMode="NoWrap" 
-                               Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13"/>
-                        
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                  Command="{Binding Source={RelativeSource AncestorType=
-                                {x:Type local:InteractiveMapsViewModel}}, Path=CarTapped}" 
-                                                  CommandParameter="{Binding .}">
-
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>  
-    </RefreshView>
-     -->
 </ContentPage>
