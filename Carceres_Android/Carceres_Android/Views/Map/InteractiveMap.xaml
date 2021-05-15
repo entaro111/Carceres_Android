@@ -16,12 +16,12 @@
             <Label Text="Tu zrobić trzeba info o strefie" Margin="0,20,0,0"/>
             <AbsoluteLayout HorizontalOptions="Center">
                 <Image Source="{Binding SelectedZone.bkg_file}" Margin="0,20,0,0"/>
-                <AbsoluteLayout >
-                    
-
-                            <Image AbsoluteLayout.LayoutBounds="40, 100" Source="pin_green.png"/>
-
-
+                <AbsoluteLayout x:DataType="model:Zone" BindableLayout.ItemsSource="{Binding places}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="model:Places">
+                            <Image Source="pin_green.png"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
                 </AbsoluteLayout>
             </AbsoluteLayout>
         </StackLayout>
