@@ -19,13 +19,18 @@ namespace Carceres_Android.Views.Map
         {
             InitializeComponent();
             BindingContext = _viewModel = new InteractiveMapsViewModel();
-            
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             _viewModel.OnAppearing();
+        }
+
+        private void Picker_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            _viewModel.UpdatePins();
+            test.Children.Add(_viewModel.absl);
         }
     }
 }

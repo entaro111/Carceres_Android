@@ -9,20 +9,13 @@
              xmlns:local="clr-namespace:Carceres_Android.ViewModels.Maps"
              xmlns:model="clr-namespace:Carceres_Android.Models">
 
-    <RefreshView x:DataType="local:InteractiveMapsViewModel" Command="{Binding LoadZonesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <RefreshView x:DataType="local:InteractiveMapsViewModel"  Command="{Binding LoadZonesCommand}"  IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <StackLayout>
             <Picker Title="Wybierz strefę" ItemsSource="{Binding Zones}" ItemDisplayBinding="{Binding name}" 
-                    SelectedItem="{Binding SelectedZone}" HorizontalTextAlignment="Center"></Picker>
+                    SelectedItem="{Binding SelectedZone}" SelectedIndexChanged="Picker_OnSelectedIndexChanged" HorizontalTextAlignment="Center"></Picker>
             <Label Text="Tu zrobić trzeba info o strefie" Margin="0,20,0,0"/>
-            <AbsoluteLayout HorizontalOptions="Center">
+            <AbsoluteLayout x:Name="test" HorizontalOptions="Center">
                 <Image Source="{Binding SelectedZone.bkg_file}" Margin="0,20,0,0"/>
-                <AbsoluteLayout x:DataType="model:Zone" BindableLayout.ItemsSource="{Binding places}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate x:DataType="model:Places">
-                            <Image Source="pin_green.png"/>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </AbsoluteLayout>
             </AbsoluteLayout>
         </StackLayout>
     </RefreshView>

@@ -43,6 +43,10 @@ namespace Carceres_Android.Services.Maps
                 using (var client = new HttpClient())
                 {
                     string URL = "http://10.0.2.2:43343/api/zones";
+                    client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
+                    client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
                     var responseMessage = await client.GetAsync(URL);
                     responseMessage.EnsureSuccessStatusCode();

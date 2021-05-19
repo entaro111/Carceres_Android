@@ -13,13 +13,13 @@ namespace Carceres_Android.Models
 
         public class Place
         {
-            public int id { get; }
-            public int nr { get; }
-            public int zone_id { get; }
-            public string name { get; }
-            public float pos_x { get; }
-            public float pos_y { get; }
-            public bool occupied { get; }
+            public int id { get; set; }
+            public int nr { get; set; }
+            public int zone_id { get; set; }
+            public string name { get; set; }
+            public float pos_x { get; set; }
+            public float pos_y { get; set; }
+            public bool occupied { get; set; }
         }
 
         public List<Place> places { get; set; }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Maps
@@ -14,7 +15,7 @@ namespace Carceres_Android.ViewModels.Maps
         private Zone _selectedZone;
         public ObservableCollection<Zone> Zones { get; }
         public Command LoadZonesCommand { get; }
-
+        public AbsoluteLayout absl  = new AbsoluteLayout();
         public IMapsService<Zone> ZonesService => DependencyService.Get<IMapsService<Zone>>();
 
         public InteractiveMapsViewModel()
@@ -22,9 +23,8 @@ namespace Carceres_Android.ViewModels.Maps
             Title = "Mapa";
             Zones = new ObservableCollection<Zone>();
             LoadZonesCommand = new Command(ExecuteLoadZonesCommand);
-
         }
-
+      
         public Zone SelectedZone
         {
             get => _selectedZone;
@@ -53,6 +53,8 @@ namespace Carceres_Android.ViewModels.Maps
                 {
                     Zones.Add(zone);
                 }
+                SelectedZone = Zones[0];               
+
             }
             catch (Exception ex)
             {
@@ -63,9 +65,25 @@ namespace Carceres_Android.ViewModels.Maps
                 IsBusy = false;
             }
         }
+        public void UpdatePins()
+        {
+            absl.Children.Clear();
+            foreach (var place in SelectedZone.places)
+            {
+                
+                RelativeLayout rel = new RelativeLayout();
+                Image image = new Image();
+                if(place.occupied) image.Source = "pin_blue.png";
+                else image.Source = "pin_green.png";
+                rel.Children.Add(image, Constraint.Constant(place.pos_x*4.8), Constraint.Constant(place.pos_y*4.9));
+                absl.Children.Add(rel);
+            }
+        }
+
         public void OnAppearing()
         {
             IsBusy = true;
+            
             
         }
     }
