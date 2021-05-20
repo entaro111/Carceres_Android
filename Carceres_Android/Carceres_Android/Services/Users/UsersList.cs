@@ -1,58 +1,57 @@
 ﻿using Carceres_Android.Models;
+using Carceres_Android.Services.API;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Carceres_Android.Services.Users
 {
     public class UsersList : IUsersList<User>
     {
-        readonly List<User> users;
+
+        //private const string URL = "http://10.0.2.2:43343/api/user";
+        public IRestService RestService => DependencyService.Get<IRestService>();
 
         public UsersList()
         {
-            users = new List<User>()
-            {
-                new User { id = Guid.NewGuid().ToString(), username = "Test1", userType = "Administrator" },
-                new User { id = Guid.NewGuid().ToString(), username = "Test2", userType = "Klient" },
-                new User { id = Guid.NewGuid().ToString(), username = "Test3", userType = "Bot" }
-            };
-        }
-        public async Task<bool> AddUserAsync(User user)
-        {
-            users.Add(user);
 
-            return await Task.FromResult(true);
         }
 
         public async Task<bool> UpdateUserAsync(User user)
         {
-            var oldUser = users.Where((User arg) => arg.id == user.id).FirstOrDefault();
-            users.Remove(oldUser);
-            users.Add(user);
+            using (var client = new HttpClient())
+            {
+                string URL = "http://10.0.2.2:43343/api/user";
+                client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
+                var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+                var responseMessage = await client.PutAsync(URL, content);
+                responseMessage.EnsureSuccessStatusCode();
+                var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
+                var response = JsonConvert.DeserializeObject<Car>(jsonResponse);
+                return await Task.FromResult(true);
 
-            return await Task.FromResult(true);
+            };
         }
 
-        public async Task<bool> DeleteUserAsync(string id)
+        public async Task<User> GetUserAsync()
         {
-            var oldUser = users.Where((User arg) => arg.id == id).FirstOrDefault();
-            users.Remove(oldUser);
 
-            return await Task.FromResult(true);
-        }
-
-        public async Task<User> GetUserAsync(string id)
-        {
-            return await Task.FromResult(users.FirstOrDefault(s => s.id == id));
-        }
-
-        public async Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false)
-        {
-            return await Task.FromResult(users);
+                using (var client = new HttpClient())
+                {
+                    string URL = "http://10.0.2.2:43343/api/user";
+                     client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
+                    var responseMessage = await client.GetAsync(URL);
+                    responseMessage.EnsureSuccessStatusCode();
+                    var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
+                    var response = JsonConvert.DeserializeObject<User>(jsonResponse);
+                    return response;
+                }
         }
     }
 }
-            
+

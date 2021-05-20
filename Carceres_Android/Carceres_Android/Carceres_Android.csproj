@@ -56,15 +56,6 @@
     <EmbeddedResource Update="Views\Reservations\ReservationsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Users\NewUserPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Users\UserDetailPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Users\UsersPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -74,5 +65,9 @@
     <Compile Update="Views\Payments\PaymentDetailPage.xaml.cs">
       <DependentUpon>PaymentDetailPage.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Users\" />
   </ItemGroup>
 </Project>

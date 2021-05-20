@@ -11,7 +11,7 @@ namespace Carceres_Android.ViewModels.Clients
 {
     public class ClientsViewModel : BaseViewModel
     {
-        public ObservableCollection<Client> Clients { get; }
+        public ObservableCollection<Models.Clients> Clients { get; }
         public Command LoadClientsCommand { get; }
 
         public IClientsList ClientsService => DependencyService.Get<IClientsList>();
@@ -19,7 +19,7 @@ namespace Carceres_Android.ViewModels.Clients
         public ClientsViewModel()
         {
             Title = "Klienci";
-            Clients = new ObservableCollection<Client>();
+            Clients = new ObservableCollection<Models.Clients>();
             LoadClientsCommand = new Command(ExecuteLoadClientsCommand);
 
 

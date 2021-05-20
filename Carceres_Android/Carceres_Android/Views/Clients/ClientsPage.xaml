@@ -16,7 +16,7 @@
         <CollectionView x:Name=" ClientsListView" ItemsSource="{Binding Clients}" SelectedItem="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Client">
+                    <StackLayout Padding="10" x:DataType="model:Clients">
                         <Label Text="{Binding name}" LineBreakMode="NoWrap" 
                                Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                         <Label Text="{Binding surname}" LineBreakMode="NoWrap" 

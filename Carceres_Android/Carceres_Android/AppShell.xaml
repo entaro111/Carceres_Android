@@ -2,7 +2,6 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:Carceres_Android.Views"
-       xmlns:localUsers ="clr-namespace:Carceres_Android.Views.Users"
        xmlns:localCars ="clr-namespace:Carceres_Android.Views.Cars"
        xmlns:localClients ="clr-namespace:Carceres_Android.Views.Clients"
        xmlns:localPayments ="clr-namespace:Carceres_Android.Views.Payments"
@@ -76,6 +75,11 @@
     <FlyoutItem Title="Mapa">
         <ShellContent Route="InteractiveMapPage" ContentTemplate="{DataTemplate localMap:InteractiveMap}" />
     </FlyoutItem>
+
+    <FlyoutItem Title="Samochody">
+        <ShellContent Route="CarsPage" ContentTemplate="{DataTemplate localCars:CarsPage}" />
+    </FlyoutItem>
+    <!--
     <FlyoutItem Title="Użytkownicy">
         <ShellContent Route="UsersPage" ContentTemplate="{DataTemplate localUsers:UsersPage}" />
     </FlyoutItem>
@@ -91,6 +95,7 @@
     <FlyoutItem Title="Płatności">
         <ShellContent Route="PaymentsPage" ContentTemplate="{DataTemplate localPayments:PaymentsPage}" />
     </FlyoutItem>
+    -->
     <FlyoutItem Title="Moje rezerwacje">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>

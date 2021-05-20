@@ -4,7 +4,7 @@ using Carceres_Android.Views.Cars;
 using Carceres_Android.Views.Clients;
 using Carceres_Android.Views.Payments;
 using Carceres_Android.Views.Reservations;
-using Carceres_Android.Views.Users;
+//using Carceres_Android.Views.Users;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -18,8 +18,6 @@ namespace Carceres_Android
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
-            Routing.RegisterRoute(nameof(UserDetailPage), typeof(UserDetailPage));
-            Routing.RegisterRoute(nameof(NewUserPage), typeof(NewUserPage));
             Routing.RegisterRoute(nameof(CarDetailPage), typeof(CarDetailPage));
             Routing.RegisterRoute(nameof(UpdateCarPage), typeof(UpdateCarPage));
             Routing.RegisterRoute(nameof(NewCarPage), typeof(NewCarPage));
@@ -29,6 +27,7 @@ namespace Carceres_Android
             Routing.RegisterRoute(nameof(NewPaymentPage), typeof(NewPaymentPage));
             Routing.RegisterRoute(nameof(ReservationDetailPage), typeof(ReservationDetailPage));
             Routing.RegisterRoute(nameof(NewReservationPage), typeof(NewReservationPage));
+            Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

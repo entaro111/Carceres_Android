@@ -20,7 +20,7 @@ namespace Carceres_Android.Services.Clients
         {
         }
 
-        public Task<IList<Client>> GetClientsAsync()
+        public Task<IList<Models.Clients>> GetClientsAsync()
         {
             return RestService.ExecuteWithRetryAsync(async () =>
             {
@@ -38,14 +38,14 @@ namespace Carceres_Android.Services.Clients
                     JObject response = JObject.Parse(jsonResponse);
 
                     IList<JToken> results = response["results"].Children().ToList();
-                    IList<Client> Clients = new List<Client>();
+                    IList<Models.Clients> ClientsList = new List<Models.Clients>();
                     foreach (JToken result in results)
                     {
-                        Client client = result.ToObject<Client>();
-                        Clients.Add(client);
+                        Models.Clients client = result.ToObject<Models.Clients>();
+                        ClientsList.Add(client);
                     }
                     //var response = JsonConvert.DeserializeObject<IEnumerable<Car>>(jsonResponse);
-                    return Clients;
+                    return ClientsList;
                 }
             });
 

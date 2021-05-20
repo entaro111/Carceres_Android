@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Carceres_Android.Models
 {
-    public class Client
+    public class Clients
     {
         public int id { get; set; }
         public string name { get; set; }

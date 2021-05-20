@@ -8,6 +8,6 @@ namespace Carceres_Android.Services.Clients
 {
     public interface IClientsList
     {
-        Task<IList<Client>> GetClientsAsync();
+        Task<IList<Models.Clients>> GetClientsAsync();
     }
 }
