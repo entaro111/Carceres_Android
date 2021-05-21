@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 
@@ -9,43 +10,61 @@ namespace Carceres_Android.ViewModels.Payments
     public class PaymentDetailViewModel : BaseViewModel
     {
         private string paymentId;
-        private string paid_date;
-        private string value;
+        private string carBrand;
+        private string carPlate;
+        private string reservationStart;
+        private string reservationEnd;
+        private int prize;
 
-        //public string Id { get; set; }
-
-        public string PaidDate
+        public string CarBrand
         {
-            get => paid_date;
-            set => SetProperty(ref paid_date, value);
+            get => carBrand;
+            set => SetProperty(ref carBrand, value);
         }
-
-        public string Value
+        public string CarPlate
         {
-            get => value;
-            set => SetProperty(ref value, value);
+            get => carPlate;
+            set => SetProperty(ref carPlate, value);
         }
-
+        public string ReservationStart
+        {
+            get => reservationStart;
+            set => SetProperty(ref reservationStart, value);
+        }
+        public string ReservationEnd
+        {
+            get => reservationEnd;
+            set => SetProperty(ref reservationEnd, value);
+        }
+        public int Prize
+        {
+            get => prize;
+            set => SetProperty(ref prize, value);
+        }
         public string PaymentId
         {
-            get => paymentId;
-            set => SetProperty(ref paymentId, value);
+            get { return paymentId; }
+            set
+            {
+                paymentId = value;
+                LoadPaymentId(value);
+            }
         }
-        /*
-        public async void LoadCarId(string userId)
+
+
+        
+        public async void LoadPaymentId(string paymentId)
         {
             try
             {
-                var car = await CarsList.GetCarAsync(carId);
-                Id = car.id;
-                Plate = car.plate;
-                Brand = car.brand;
+                var payment = await PaymentsService.GetPaymentAsync(paymentId);
+                Prize = payment.price;
             }
             catch (Exception)
             {
                 Debug.WriteLine("Failed to Load User");
             }
         }
-        */
+        
     }
 }

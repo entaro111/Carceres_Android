@@ -100,7 +100,7 @@
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Moje płatności">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="Payments" ContentTemplate="{DataTemplate localPayments:PaymentsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Cennik">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />

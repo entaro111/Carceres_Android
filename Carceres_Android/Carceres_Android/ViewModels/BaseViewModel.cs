@@ -1,6 +1,7 @@
 ﻿using Carceres_Android.Models;
 using Carceres_Android.Services;
 using Carceres_Android.Services.Cars;
+using Carceres_Android.Services.Payments;
 using Carceres_Android.Services.Users;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Carceres_Android.ViewModels
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
         public IUsersList<User> UsersList => DependencyService.Get<IUsersList<User>>();
         public ICarsList<Car> CarsList => DependencyService.Get<ICarsList<Car>>();
+        public IPaymentsList<Payment> PaymentsService => DependencyService.Get<IPaymentsList<Payment>>();
 
         bool isBusy = false;
         public bool IsBusy

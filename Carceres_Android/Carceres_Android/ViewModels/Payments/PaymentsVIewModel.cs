@@ -1,5 +1,6 @@
 ﻿using Carceres_Android.Models;
 using Carceres_Android.Services.Payments;
+using Carceres_Android.Views.Payments;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,17 +12,17 @@ namespace Carceres_Android.ViewModels.Payments
 {
     public class PaymentsViewModel : BaseViewModel
     {
+        private Payment _selectedPayment;
         public ObservableCollection<Payment> Payments { get; }
         public Command LoadPaymentsCommand { get; }
-
-        public IPaymentsList PaymentsService => DependencyService.Get<IPaymentsList>();
+        public Command<Payment> PaymentTapped { get; }
 
         public PaymentsViewModel()
         {
             Title = "Płatności";
             Payments = new ObservableCollection<Payment>();
             LoadPaymentsCommand = new Command(ExecuteLoadPaymentsCommand);
-
+            PaymentTapped = new Command<Payment>(OnPaymentSelected);
 
         }
 
@@ -52,6 +53,25 @@ namespace Carceres_Android.ViewModels.Payments
         public void OnAppearing()
         {
             IsBusy = true;
+            SelectedPayment = null;
         }
+
+        public Payment SelectedPayment
+        {
+            get => _selectedPayment;
+            set
+            {
+                SetProperty(ref _selectedPayment, value);
+                OnPaymentSelected(value);
+            }
+        }
+
+        async void OnPaymentSelected(Payment payment)
+        {
+            if (payment == null) return;
+            await Shell.Current.GoToAsync($"{nameof(PaymentDetailPage)}?{nameof(PaymentDetailViewModel.PaymentId)}={payment.id}");
+        }
+
+
     }
 }

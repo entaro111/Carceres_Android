@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Carceres_Android.Services.Payments
 {
-    public interface IPaymentsList
+    public interface IPaymentsList<T>
     {
-        Task<IList<Payment>> GetPaymentsAsync();
+
+        Task<List<T>> GetPaymentsAsync();
+
+        Task<T> GetPaymentAsync(string id);
     }
 }

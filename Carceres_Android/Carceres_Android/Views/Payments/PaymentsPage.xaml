@@ -16,7 +16,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10" x:DataType="model:Payment">
-                        <Label Text="{Binding paid_date}" LineBreakMode="NoWrap" 
+                        <Label Text="{Binding sale_date, StringFormat='{0:dd MMMM yyyy HH:mm}'}" LineBreakMode="NoWrap" 
                                Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                         <Label Text="{Binding value}" LineBreakMode="NoWrap" 
                                Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13"/>

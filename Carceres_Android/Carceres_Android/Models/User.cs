@@ -25,7 +25,7 @@ namespace Carceres_Android.Models
 
         }
         
-        public DateTime blocked_since { get; set; }
+        public DateTime? blocked_since { get; set; }
        
         
     }
