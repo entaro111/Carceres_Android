@@ -4,16 +4,9 @@
              x:Class="Carceres_Android.Views.Cars.CarDetailPage"
              xmlns:local="clr-namespace:Carceres_Android.ViewModels.Cars"
              Title="{Binding Title}">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Aktualizuj" Command="{Binding Source={RelativeSource AncestorType=
-                                {x:Type local:CarDetailViewModel}}, Path=UpdateCarCommand}"/>
-    </ContentPage.ToolbarItems>
-
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Rejestracja:" FontSize="Medium" />
-        <Label Text="{Binding Plate}" FontSize="Small"/>
-        <Label Text="Marka:" FontSize="Medium" />
-        <Label Text="{Binding Brand}" FontSize="Small"/>
+        <Label Text="{Binding Plate, StringFormat='Rejestracja: {0}'}" FontSize="Medium"/>
+        <Label Text="{Binding Brand, StringFormat='Marka: {0}'}" FontSize="Medium"/>
+        <Label Text="{Binding ClientName, StringFormat='Klient: {0}'}" FontSize="Medium"/>
     </StackLayout>
 </ContentPage>

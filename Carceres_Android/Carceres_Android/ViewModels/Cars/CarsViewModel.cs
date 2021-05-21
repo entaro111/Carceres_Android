@@ -13,7 +13,6 @@ namespace Carceres_Android.ViewModels.Cars
         private Car _selectedCar;
         public ObservableCollection<Car> Cars { get; }
         public Command LoadCarsCommand { get; }
-        public Command AddCarCommand { get; }
         public Command<Car> CarTapped { get; }
         public ICarsList<Car> CarsService => DependencyService.Get<ICarsList<Car>>();
 
@@ -23,7 +22,6 @@ namespace Carceres_Android.ViewModels.Cars
             Cars = new ObservableCollection<Car>();
             LoadCarsCommand = new Command(ExecuteLoadCarsCommand);
             CarTapped = new Command<Car>(OnCarSelected);
-            AddCarCommand = new Command(OnAddCar);
         }
 
         private async void ExecuteLoadCarsCommand(object obj)
@@ -75,9 +73,5 @@ namespace Carceres_Android.ViewModels.Cars
             await Shell.Current.GoToAsync($"{nameof(CarDetailPage)}?{nameof(CarDetailViewModel.CarId)}={car.id}");
         }
 
-        private async void OnAddCar(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(NewCarPage));
-        }
     }
 }

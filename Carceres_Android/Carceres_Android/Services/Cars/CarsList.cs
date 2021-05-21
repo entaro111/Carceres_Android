@@ -14,9 +14,8 @@ namespace Carceres_Android.Services.Cars
     public class CarsList : ICarsList<Car>
     {
         
-        private const string URL = "http://10.0.2.2:43343/api/cars";
+        private const string URL = "http://10.0.2.2:43343/api/client/cars";
         public IRestService RestService => DependencyService.Get<IRestService>();
-        //public List<Car> Cars { get; private set; }
         public CarsList()
         {
         }
@@ -56,7 +55,7 @@ namespace Carceres_Android.Services.Cars
             });
 
         }
-
+        /*
         public async Task<bool> AddCarAsync(Car car)
         {
 
@@ -93,5 +92,6 @@ namespace Carceres_Android.Services.Cars
 
             };
         }
+        */
     }
 }

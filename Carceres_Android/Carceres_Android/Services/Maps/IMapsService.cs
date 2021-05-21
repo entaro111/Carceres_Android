@@ -9,5 +9,8 @@ namespace Carceres_Android.Services.Maps
     public interface IMapsService<T>
     {
         Task<List<T>> GetZonesAsync();
+
+        Task<ZoneInfo> GetZoneInfoAsync(string id);
+
     }
 }

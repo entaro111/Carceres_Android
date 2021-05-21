@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using Xamarin.Forms;
+using static Carceres_Android.Models.Car;
 
 namespace Carceres_Android.ViewModels.Cars
 {
@@ -12,12 +13,12 @@ namespace Carceres_Android.ViewModels.Cars
         private string carId;
         private string plate;
         private string brand;
-
-        public Command UpdateCarCommand { get; }
+        private string clientName;
+        private string clientSurname;
 
         public CarDetailViewModel()
         {
-            UpdateCarCommand = new Command(OnUpdateCar);
+
         }
 
         public int Id { get; set; }
@@ -34,12 +35,18 @@ namespace Carceres_Android.ViewModels.Cars
             set => SetProperty(ref brand, value);
         }
         
-        //public string CarId
-        //{
-        //    get => carId;
-        //    set => SetProperty(ref carId, value);
-        //}
-        
+        public string ClientName
+        {
+            get => clientName;
+            set => SetProperty(ref clientName, value);
+        }
+
+        public string ClientSurname
+        {
+            get => clientSurname;
+            set => SetProperty(ref clientSurname, value);
+        }
+
         public string CarId
         {
             get { return carId; }
@@ -58,16 +65,13 @@ namespace Carceres_Android.ViewModels.Cars
                 Id = car.id;
                 Plate = car.plate;
                 Brand = car.brand;
+                ClientName = car.client.name;
+                ClientSurname = car.client.surname;
             }
             catch (Exception)
             {
                 Debug.WriteLine("Failed to Load User");
             }
-        }
-
-        private async void OnUpdateCar(object obj)
-        {
-            await Shell.Current.GoToAsync($"{nameof(UpdateCarPage)}?{nameof(UpdateCarViewModel.CarId)}={carId}");
         }
 
     }

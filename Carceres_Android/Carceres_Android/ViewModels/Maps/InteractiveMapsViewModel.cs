@@ -18,6 +18,10 @@ namespace Carceres_Android.ViewModels.Maps
         public AbsoluteLayout absl  = new AbsoluteLayout();
         public IMapsService<Zone> ZonesService => DependencyService.Get<IMapsService<Zone>>();
 
+        private int _all;
+        private int _free;
+        private int _occupied;
+
         public InteractiveMapsViewModel()
         {
             Title = "Mapa";
@@ -39,6 +43,23 @@ namespace Carceres_Android.ViewModels.Maps
             }
         }
 
+        public int All
+        {
+            get => _all;
+            set => SetProperty(ref _all, value);
+        }
+
+        public int Free
+        {
+            get => _free;
+            set => SetProperty(ref _free, value);
+        }
+        public int Occupied
+        {
+            get => _occupied;
+            set => SetProperty(ref _occupied, value);
+        }
+
         private async void ExecuteLoadZonesCommand(object obj)
         {
             IsBusy = true;
@@ -53,8 +74,8 @@ namespace Carceres_Android.ViewModels.Maps
                 {
                     Zones.Add(zone);
                 }
-                SelectedZone = Zones[0];               
-
+                SelectedZone = Zones[0];
+                LoadZoneInfo();
             }
             catch (Exception ex)
             {
@@ -65,6 +86,22 @@ namespace Carceres_Android.ViewModels.Maps
                 IsBusy = false;
             }
         }
+
+        public async void LoadZoneInfo()
+        {
+            try
+            {
+                var info = await ZonesService.GetZoneInfoAsync(SelectedZone.id.ToString());
+                All = info.all;
+                Free = info.free;
+                Occupied = info.occupied;
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Failed to Load Info");
+            }
+        }
+
         public void UpdatePins()
         {
             absl.Children.Clear();
@@ -83,8 +120,7 @@ namespace Carceres_Android.ViewModels.Maps
         public void OnAppearing()
         {
             IsBusy = true;
-            
-            
+  
         }
     }
 }

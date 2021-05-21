@@ -14,29 +14,11 @@ namespace Carceres_Android.Services.Maps
 {
     public class MapsService : IMapsService<Zone>
     {
-        //private const string URL = "http://10.0.2.2:43343/api/zones";
         public IRestService RestService => DependencyService.Get<IRestService>();
         public MapsService()
         {
         }
 
-        public Task<Zone> GetZoneAsync(string id)
-        {
-            return RestService.ExecuteWithRetryAsync(async () =>
-            {
-                using (var client = new HttpClient())
-                {
-                    string URL1 = "http://10.0.2.2:43343/api/cars/" + id;
-                    client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
-                    var responseMessage = await client.GetAsync(URL1);
-                    responseMessage.EnsureSuccessStatusCode();
-                    var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
-                    var response = JsonConvert.DeserializeObject<Zone>(jsonResponse);
-                    return response;
-                }
-            });
-
-        }
         public async Task<List<Zone>> GetZonesAsync()
         {           
             
@@ -58,47 +40,19 @@ namespace Carceres_Android.Services.Maps
                 }
         }
 
-        /*
-         * 
-         * 
-            JObject ojObject = (JObject)response["results"];
-                            JArray array = (JArray)ojObject["places"];
-        public async Task<bool> AddCarAsync(Zone zone)
+        public async Task<ZoneInfo> GetZoneInfoAsync(string id)
         {
-
-            using (var client = new HttpClient())
+            using(var client = new HttpClient())
             {
-                string URL2 = "http://10.0.2.2:43343/api/cars";
+                string URL = $"http://10.0.2.2:43343/api/zones/{id}/info";
                 client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
-
-                var content = new StringContent(JsonConvert.SerializeObject(car), Encoding.UTF8, "application/json");
-                var responseMessage = await client.PostAsync(URL2, content);
+                var responseMessage = await client.GetAsync(URL);
                 responseMessage.EnsureSuccessStatusCode();
                 var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
-                var response = JsonConvert.DeserializeObject<Car>(jsonResponse);
-                return await Task.FromResult(true);
-
-            };
+                dynamic respone = JsonConvert.DeserializeObject(jsonResponse);
+                ZoneInfo info = respone.ToObject<ZoneInfo>();
+                return info;
+            }
         }
-
-
-        public async Task<bool> UpdateCarAsync(string id, Zone zone)
-        {
-
-            using (var client = new HttpClient())
-            {
-                string URL3 = "http://10.0.2.2:43343/api/cars/" + id;
-                client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
-
-                var content = new StringContent(JsonConvert.SerializeObject(car), Encoding.UTF8, "application/json");
-                var responseMessage = await client.PutAsync(URL3, content);
-                responseMessage.EnsureSuccessStatusCode();
-                var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
-                var response = JsonConvert.DeserializeObject<Car>(jsonResponse);
-                return await Task.FromResult(true);
-
-            };
-        }
-        */
     }
 }

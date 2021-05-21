@@ -13,7 +13,18 @@
         <StackLayout>
             <Picker Title="Wybierz strefę" ItemsSource="{Binding Zones}" ItemDisplayBinding="{Binding name}" 
                     SelectedItem="{Binding SelectedZone}" SelectedIndexChanged="Picker_OnSelectedIndexChanged" HorizontalTextAlignment="Center"></Picker>
-            <Label Text="Tu zrobić trzeba info o strefie" Margin="0,20,0,0"/>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Wszystkie miejsca: " FontSize="16"/>
+                        <Span Text="{Binding All} " FontSize="16" FontAttributes="Bold"/>
+                        <Span Text=" Wolne miejsca: " FontSize="16"/>
+                        <Span Text="{Binding Free}" FontSize="16" FontAttributes="Bold"/>
+                        <Span Text=" Zajęte miejsca: " FontSize="16"/>
+                        <Span Text="{Binding Occupied}" FontSize="16" FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label> 
             <AbsoluteLayout x:Name="test" HorizontalOptions="Center">
                 <Image Source="{Binding SelectedZone.bkg_file}" Margin="0,20,0,0"/>
             </AbsoluteLayout>
