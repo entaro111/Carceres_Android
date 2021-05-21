@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Carceres_Android.Services.Reservations
 {
-    public interface IReservationsList
+    public interface ISubscriptionsList<T>
     {
-        Task<IList<Reservation>> GetReservationsAsync();
+        Task<List<T>> GetSubscriptionsAsync();
+        Task<T> GetSubscriptionAsync(string id);
     }
 }

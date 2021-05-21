@@ -14,11 +14,11 @@ namespace Carceres_Android.Views.Reservations
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewReservationPage : ContentPage
     {
-        public Reservation Reservation { get; set; }
+        public Subscription Reservation { get; set; }
         public NewReservationPage()
         {
             InitializeComponent();
-            BindingContext = new NewReservationViewModel();
+            BindingContext = new NewSubscriptionViewModel();
         }
     }
 }

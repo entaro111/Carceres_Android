@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Carceres_Android.ViewModels.Reservations
 {
-    public class NewReservationViewModel : BaseViewModel
+    public class NewSubscriptionViewModel : BaseViewModel
     {
     }
 }

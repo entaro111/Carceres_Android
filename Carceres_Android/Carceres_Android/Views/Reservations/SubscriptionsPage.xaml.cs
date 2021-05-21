@@ -4,13 +4,13 @@ using Xamarin.Forms;
 
 namespace Carceres_Android.Views.Reservations
 {
-    public partial class ReservationsPage : ContentPage      
+    public partial class SubscriptionsPage : ContentPage      
     {
-        ReservationsViewModel _viewModel;
-        public ReservationsPage()
+        SubscriptionsViewModel _viewModel;
+        public SubscriptionsPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new ReservationsViewModel();
+            BindingContext = _viewModel = new SubscriptionsViewModel();
         }
 
         protected override void OnAppearing()

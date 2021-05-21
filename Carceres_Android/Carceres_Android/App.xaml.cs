@@ -25,7 +25,7 @@ namespace Carceres_Android
             DependencyService.Register<CarsList>();
             DependencyService.Register<ClientsList>();
             DependencyService.Register<PaymentsList>();
-            DependencyService.Register<ReservationsList>();
+            DependencyService.Register<SubscriptionsList>();
             DependencyService.Register<MapsService>();
             DependencyService.Register<IRestService, RestService>();
             MainPage = new AppShell();

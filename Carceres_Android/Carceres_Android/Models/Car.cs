@@ -14,18 +14,7 @@ namespace Carceres_Android.Models
         public string plate { get; set; }
         public string brand { get; set; }
         public int client_id { get; set; }
-        public Client client { get; set; }
+        public Clients client { get; set; }
 
-        public class Client
-        {
-            public int id { get; set; }
-            public string name { get; set; }
-            public string surname { get; set; }
-            public string address { get; set; }
-            public string city { get; set; }
-            public string phone { get; set; }
-            public int user_id { get; set; }
-
-        }
     }
 }

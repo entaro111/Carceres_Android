@@ -38,13 +38,13 @@
     <EmbeddedResource Update="Views\Payments\PaymentsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Reservations\NewReservationPage.xaml">
+    <EmbeddedResource Update="Views\Reservations\NewSubscriptionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Reservations\ReservationDetailPage.xaml">
+    <EmbeddedResource Update="Views\Reservations\SubscriptionDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Reservations\ReservationsPage.xaml">
+    <EmbeddedResource Update="Views\Reservations\SubscriptionsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -55,6 +55,15 @@
     </Compile>
     <Compile Update="Views\Payments\PaymentDetailPage.xaml.cs">
       <DependentUpon>PaymentDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Reservations\NewSubscriptionPage.xaml.cs">
+      <DependentUpon>NewSubscriptionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Reservations\SubscriptionDetailPage.xaml.cs">
+      <DependentUpon>SubscriptionDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Reservations\SubscriptionsPage.xaml.cs">
+      <DependentUpon>SubscriptionsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

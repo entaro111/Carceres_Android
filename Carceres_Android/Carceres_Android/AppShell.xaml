@@ -97,7 +97,7 @@
     </FlyoutItem>
     -->
     <FlyoutItem Title="Moje rezerwacje">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate localReservations:SubscriptionsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Moje płatności">
         <ShellContent Route="Payments" ContentTemplate="{DataTemplate localPayments:PaymentsPage}" />
