@@ -17,11 +17,30 @@ namespace Carceres_Android.Views.Reservations
         public Subscription Subscription { get; set; }
 
         NewSubscriptionViewModel _viewModel;
+        DateTime dt = new DateTime();
         public NewSubscriptionPage()
         {
             InitializeComponent();
             BindingContext = _viewModel = new NewSubscriptionViewModel();
             
+        }
+
+        private void CarSelectedChanged(object sender, EventArgs e)
+        {
+            _viewModel.Car = (Car)CarPicker.SelectedItem;
+        }
+
+        private void PlaceSelectedChanged(object sender, EventArgs e)
+        {
+            _viewModel.Place = (Places)PlacePicker.SelectedItem;
+        }
+
+        private void DateSelectedChanged(object sender, EventArgs e)
+        {
+
+            dt = DatePicker.Date;
+            dt = dt.ToUniversalTime();
+            _viewModel.End = dt;
         }
 
     }

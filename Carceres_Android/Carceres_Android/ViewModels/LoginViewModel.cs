@@ -1,16 +1,6 @@
-﻿using Carceres_Android.Models;
-using Carceres_Android.Services.API;
+﻿using Carceres_Android.Services.API;
 using Carceres_Android.Views;
-using Newtonsoft.Json;
-using RestSharp;
-using RestSharp.Authenticators;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels

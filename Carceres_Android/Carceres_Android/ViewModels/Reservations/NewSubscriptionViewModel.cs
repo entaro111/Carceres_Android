@@ -1,12 +1,9 @@
 ﻿using Carceres_Android.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Carceres_Android.ViewModels.Cars;
-using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Reservations
 {
@@ -35,19 +32,40 @@ namespace Carceres_Android.ViewModels.Reservations
         public Places Place
         {
             get => place;
-            set => SetProperty(ref place, value);
+            set
+            {
+                if (place != value)
+                {
+                    SetProperty(ref place, value);
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public Car Car
         {
             get => car;
-            set => SetProperty(ref car, value);
+            set
+            {
+                if(car != value)
+                {
+                    SetProperty(ref car, value);
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public DateTime End
         {
             get => end;
-            set => SetProperty(ref end, value);
+            set
+            {
+                if (end != value)
+                {
+                    SetProperty(ref end, value);
+                    OnPropertyChanged();
+                }
+            }
         }
 
         private bool ValidateState()
@@ -64,9 +82,12 @@ namespace Carceres_Android.ViewModels.Reservations
 
         private async void OnSave()
         {
+
             Subscription newSubscription = new Subscription()
             {
-
+                car_id = Car.id,
+                place_id = Place.id,
+                end = End
             };
             await SubscriptionsService.AddSubscriptionAsync(newSubscription);
             await Shell.Current.GoToAsync("..");
