@@ -16,13 +16,14 @@ namespace Carceres_Android.ViewModels.Reservations
         public ObservableCollection<Subscription> Subscriptions { get; }
         public Command LoadSubscriptionsCommand { get; }
         public Command<Subscription> SubscriptionTapped { get; }
+        public Command AddSubscriptionCommand { get; }
         public SubscriptionsViewModel()
         {
             Title = "Rezerwacje";
             Subscriptions = new ObservableCollection<Subscription>();
             LoadSubscriptionsCommand = new Command(ExecuteLoadSubscriptionsCommand);
             SubscriptionTapped = new Command<Subscription>(OnSubscriptionSelected);
-
+            AddSubscriptionCommand = new Command(OnAddSubscription);
         }
 
         private async void ExecuteLoadSubscriptionsCommand(object obj)
@@ -69,6 +70,11 @@ namespace Carceres_Android.ViewModels.Reservations
         {
             if (subscription == null) return;
             await Shell.Current.GoToAsync($"{nameof(SubscriptionDetailPage)}?{nameof(SubscriptionDetailViewModel.SubscriptionId)}={subscription.id}");
+        }
+
+        private async void OnAddSubscription()
+        {
+            await Shell.Current.GoToAsync(nameof(NewSubscriptionPage));
         }
     }
 }

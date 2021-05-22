@@ -12,7 +12,7 @@
     <RefreshView x:DataType="local:InteractiveMapsViewModel"  Command="{Binding LoadZonesCommand}"  IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <StackLayout>
             <Picker Title="Wybierz strefę" ItemsSource="{Binding Zones}" ItemDisplayBinding="{Binding name}" 
-                    SelectedItem="{Binding SelectedZone}" SelectedIndexChanged="Picker_OnSelectedIndexChanged" HorizontalTextAlignment="Center"></Picker>
+                    SelectedItem="{Binding SelectedZone}" SelectedIndexChanged="Picker_OnSelectedIndexChanged" HorizontalTextAlignment="Center"/>
             <Label>
                 <Label.FormattedText>
                     <FormattedString>

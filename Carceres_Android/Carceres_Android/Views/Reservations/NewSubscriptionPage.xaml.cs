@@ -12,13 +12,17 @@ using Xamarin.Forms.Xaml;
 namespace Carceres_Android.Views.Reservations
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewReservationPage : ContentPage
+    public partial class NewSubscriptionPage : ContentPage
     {
-        public Subscription Reservation { get; set; }
-        public NewReservationPage()
+        public Subscription Subscription { get; set; }
+
+        NewSubscriptionViewModel _viewModel;
+        public NewSubscriptionPage()
         {
             InitializeComponent();
-            BindingContext = new NewSubscriptionViewModel();
+            BindingContext = _viewModel = new NewSubscriptionViewModel();
+            
         }
+
     }
 }

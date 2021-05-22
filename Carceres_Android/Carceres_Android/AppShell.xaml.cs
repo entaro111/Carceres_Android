@@ -23,7 +23,7 @@ namespace Carceres_Android
             Routing.RegisterRoute(nameof(NewClientPage), typeof(NewClientPage));
             Routing.RegisterRoute(nameof(PaymentDetailPage), typeof(PaymentDetailPage));
             Routing.RegisterRoute(nameof(SubscriptionDetailPage), typeof(SubscriptionDetailPage));
-            Routing.RegisterRoute(nameof(NewReservationPage), typeof(NewReservationPage));
+            Routing.RegisterRoute(nameof(NewSubscriptionPage), typeof(NewSubscriptionPage));
             Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
         }
 

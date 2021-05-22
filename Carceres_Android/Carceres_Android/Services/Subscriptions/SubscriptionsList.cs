@@ -55,5 +55,20 @@ namespace Carceres_Android.Services.Reservations
                 }
             });
         }
+
+
+        public async Task<bool> AddSubscriptionAsync(Subscription subscription)
+        {
+            using (var client = new HttpClient())
+            {
+                string URL = "http://10.0.2.2:43343/api/subscriptions";
+                var content = new StringContent(JsonConvert.SerializeObject(subscription), Encoding.UTF8, "application/json");
+                var responseMessage = await client.PostAsync(URL,content);
+                responseMessage.EnsureSuccessStatusCode();
+                var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
+                var response = JsonConvert.DeserializeObject<Subscription>(jsonResponse);
+                return await Task.FromResult(true);
+            };
+        }
     }
 }

@@ -16,7 +16,6 @@ namespace Carceres_Android.ViewModels.Maps
         public ObservableCollection<Zone> Zones { get; }
         public Command LoadZonesCommand { get; }
         public AbsoluteLayout absl  = new AbsoluteLayout();
-        public IMapsService<Zone> ZonesService => DependencyService.Get<IMapsService<Zone>>();
 
         private int _all;
         private int _free;

@@ -14,7 +14,6 @@ namespace Carceres_Android.ViewModels.Cars
         public ObservableCollection<Car> Cars { get; }
         public Command LoadCarsCommand { get; }
         public Command<Car> CarTapped { get; }
-        public ICarsList<Car> CarsService => DependencyService.Get<ICarsList<Car>>();
 
         public CarsViewModel()
         {

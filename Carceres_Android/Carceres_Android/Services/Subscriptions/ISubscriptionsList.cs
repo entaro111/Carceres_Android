@@ -10,5 +10,7 @@ namespace Carceres_Android.Services.Reservations
     {
         Task<List<T>> GetSubscriptionsAsync();
         Task<T> GetSubscriptionAsync(string id);
+
+        Task<bool> AddSubscriptionAsync(T subscription);
     }
 }

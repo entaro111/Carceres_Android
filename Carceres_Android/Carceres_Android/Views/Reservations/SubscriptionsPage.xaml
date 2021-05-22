@@ -8,7 +8,7 @@
              x:Name="BrowseReservationPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Dodaj" Command="{Binding AddReservationCommand}"/>
+        <ToolbarItem Text="Dodaj" Command="{Binding AddSubscriptionCommand}"/>
     </ContentPage.ToolbarItems>
 
     <RefreshView x:DataType="local:SubscriptionsViewModel" Command="{Binding LoadSubscriptionsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
