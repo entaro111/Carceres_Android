@@ -1,5 +1,5 @@
 ﻿using Carceres_Android.Models;
-using Carceres_Android.Services;
+using Carceres_Android.Services.Clients;
 using Carceres_Android.Services.Cars;
 using Carceres_Android.Services.Maps;
 using Carceres_Android.Services.Payments;
@@ -16,14 +16,14 @@ namespace Carceres_Android.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IClientsList<Models.Clients> ClientService => DependencyService.Get<IClientsList<Models.Clients>>();
         public IUsersList<User> UsersList => DependencyService.Get<IUsersList<User>>();
         public ICarsList<Car> CarsList => DependencyService.Get<ICarsList<Car>>();
         public IPaymentsList<Payment> PaymentsService => DependencyService.Get<IPaymentsList<Payment>>();
         public ISubscriptionsList<Subscription> SubscriptionsService => DependencyService.Get<ISubscriptionsList<Subscription>>();
         public IMapsService<Zone> ZonesService => DependencyService.Get<IMapsService<Zone>>();
         public ICarsList<Car> CarsService => DependencyService.Get<ICarsList<Car>>();
-        public IPlaceList<Models.Places> PlacesService => DependencyService.Get<IPlaceList<Models.Places>>();
+        public IPlaceList<Places> PlacesService => DependencyService.Get<IPlaceList<Places>>();
 
         bool isBusy = false;
         public bool IsBusy

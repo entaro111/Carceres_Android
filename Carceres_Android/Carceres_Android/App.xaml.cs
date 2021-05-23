@@ -21,7 +21,6 @@ namespace Carceres_Android
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             DependencyService.Register<UsersList>();
             DependencyService.Register<CarsList>();
             DependencyService.Register<ClientsList>();

@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Clients
 {
 
-    [QueryProperty(nameof(ClientId), nameof(ClientId))]
+   
     public class ClientDetailViewModel : BaseViewModel
     {
-        private string clientId;
+        public ClientDetailViewModel()
+        {
+            Task.Run(async () => await LoadClient());
+        }
+
         private string name;
         private string surname;
 
-        //public string Id { get; set; }
 
         public string Name
         {
@@ -27,18 +32,11 @@ namespace Carceres_Android.ViewModels.Clients
             set => SetProperty(ref surname, value);
         }
 
-        public string ClientId
-        {
-            get => clientId;
-            set => SetProperty(ref clientId, value);
-        }
-        /*
-        public async void LoadClientId(string clientId)
+        public async Task LoadClient()
         {
             try
             {
-                var client = await ClientsList.GetClientAsync(clientId);
-                Id = client.id;
+                var client = await ClientService.GetClientAsync();
                 Name = client.name;
                 Surname = client.surname;
             }
@@ -47,7 +45,6 @@ namespace Carceres_Android.ViewModels.Clients
                 Debug.WriteLine("Failed to Load User");
             }
         }
-        */
     }
 
 }

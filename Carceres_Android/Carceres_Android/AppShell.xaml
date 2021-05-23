@@ -79,31 +79,17 @@
     <FlyoutItem Title="Samochody">
         <ShellContent Route="CarsPage" ContentTemplate="{DataTemplate localCars:CarsPage}" />
     </FlyoutItem>
-    <!--
-    <FlyoutItem Title="Użytkownicy">
-        <ShellContent Route="UsersPage" ContentTemplate="{DataTemplate localUsers:UsersPage}" />
+    
+    <FlyoutItem Title="Dane klienta">
+        <ShellContent Route="ClientsPage" ContentTemplate="{DataTemplate localClients:ClientDetailPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Klienci">
-        <ShellContent Route="ClientsPage" ContentTemplate="{DataTemplate localClients:ClientsPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Samochody">
-        <ShellContent Route="CarsPage" ContentTemplate="{DataTemplate localCars:CarsPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Rezerwacje">
-        <ShellContent Route="ReservationsPage" ContentTemplate="{DataTemplate localReservations:ReservationsPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Płatności">
-        <ShellContent Route="PaymentsPage" ContentTemplate="{DataTemplate localPayments:PaymentsPage}" />
-    </FlyoutItem>
-    -->
+    
     <FlyoutItem Title="Moje rezerwacje">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate localReservations:SubscriptionsPage}" />
     </FlyoutItem>
+        
     <FlyoutItem Title="Moje płatności">
         <ShellContent Route="Payments" ContentTemplate="{DataTemplate localPayments:PaymentsPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Cennik">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
 
 

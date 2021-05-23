@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Carceres_Android.Services.Clients
 {
-    public interface IClientsList
+    public interface IClientsList<T>
     {
-        Task<IList<Models.Clients>> GetClientsAsync();
+        Task<T> GetClientAsync();
     }
 }
