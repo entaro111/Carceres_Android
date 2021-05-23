@@ -4,7 +4,7 @@ using Carceres_Android.Views.Cars;
 using Carceres_Android.Views.Clients;
 using Carceres_Android.Views.Payments;
 using Carceres_Android.Views.Reservations;
-//using Carceres_Android.Views.Users;
+using Carceres_Android.Views.Users;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -16,7 +16,7 @@ namespace Carceres_Android
         public AppShell()
         {
             InitializeComponent();
-
+            Routing.RegisterRoute(nameof(UserDetailPage), typeof(UserDetailPage));
             Routing.RegisterRoute(nameof(CarDetailPage), typeof(CarDetailPage));
             Routing.RegisterRoute(nameof(ClientDetailPage), typeof(ClientDetailPage));
             Routing.RegisterRoute(nameof(PaymentDetailPage), typeof(PaymentDetailPage));

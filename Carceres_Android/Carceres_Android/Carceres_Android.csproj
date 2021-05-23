@@ -40,6 +40,9 @@
     <EmbeddedResource Update="Views\Reservations\SubscriptionsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Users\UserDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -58,9 +61,5 @@
     <Compile Update="Views\Reservations\SubscriptionsPage.xaml.cs">
       <DependentUpon>SubscriptionsPage.xaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Users\" />
   </ItemGroup>
 </Project>

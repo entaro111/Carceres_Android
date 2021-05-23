@@ -7,12 +7,11 @@ using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Clients
 {
-
-   
-    public class ClientDetailViewModel : BaseViewModel
+     public class ClientDetailViewModel : BaseViewModel
     {
         public ClientDetailViewModel()
         {
+            Title = "Klient";
             Task.Run(async () => await LoadClient());
         }
 

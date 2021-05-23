@@ -8,11 +8,11 @@ namespace Carceres_Android.Views
 {
     public partial class AboutPage : ContentPage
     {
-        UserViewModel _viewModel;
+        AboutViewModel _viewModel;
         public AboutPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new UserViewModel();
+            BindingContext = _viewModel = new AboutViewModel();
         }
 
         protected override void OnAppearing()

@@ -5,6 +5,7 @@
        xmlns:localCars ="clr-namespace:Carceres_Android.Views.Cars"
        xmlns:localClients ="clr-namespace:Carceres_Android.Views.Clients"
        xmlns:localPayments ="clr-namespace:Carceres_Android.Views.Payments"
+       xmlns:localUsers ="clr-namespace:Carceres_Android.Views.Users"
        xmlns:localReservations ="clr-namespace:Carceres_Android.Views.Reservations"
        xmlns:localMap ="clr-namespace:Carceres_Android.Views.Map"
        Title="Carceres_Android"
@@ -79,7 +80,11 @@
     <FlyoutItem Title="Samochody">
         <ShellContent Route="CarsPage" ContentTemplate="{DataTemplate localCars:CarsPage}" />
     </FlyoutItem>
-    
+
+    <FlyoutItem Title="Dane użytkownika">
+        <ShellContent Route="UserPage" ContentTemplate="{DataTemplate localUsers:UserDetailPage}" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Dane klienta">
         <ShellContent Route="ClientsPage" ContentTemplate="{DataTemplate localClients:ClientDetailPage}" />
     </FlyoutItem>

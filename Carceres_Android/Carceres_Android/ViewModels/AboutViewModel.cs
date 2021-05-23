@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Users
 {
-    public class UserViewModel : BaseViewModel
+    public class AboutViewModel : BaseViewModel
     {
         public StackLayout stack = new StackLayout();
 
@@ -18,7 +18,7 @@ namespace Carceres_Android.ViewModels.Users
 
         private string greeting;
 
-        public UserViewModel()
+        public AboutViewModel()
         {
             Title = "Carceres";
         }
