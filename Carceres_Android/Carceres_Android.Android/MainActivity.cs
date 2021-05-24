@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using System.Globalization;
 
 namespace Carceres_Android.Droid
 {
@@ -13,7 +14,7 @@ namespace Carceres_Android.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture("pl-PL");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

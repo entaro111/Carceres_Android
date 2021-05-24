@@ -56,5 +56,17 @@ namespace Carceres_Android.Services.Payments
                 }
             });
         }
+
+        public async Task<bool> UpdatePaymentAsync(string id)
+        {
+            using (var client = new HttpClient())
+            {
+                string URL1 = "http://10.0.2.2:43343/api/client/payments/" + id;
+                client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
+                var responseMessage = await client.PutAsync(URL1,null);
+                responseMessage.EnsureSuccessStatusCode();
+                return await Task.FromResult(true);
+            }
+        }
     }
 }

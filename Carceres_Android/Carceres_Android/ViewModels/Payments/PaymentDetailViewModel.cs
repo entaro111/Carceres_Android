@@ -9,12 +9,19 @@ namespace Carceres_Android.ViewModels.Payments
     [QueryProperty(nameof(PaymentId), nameof(PaymentId))]
     public class PaymentDetailViewModel : BaseViewModel
     {
+        public Command SaveCommand { get; }
         private string paymentId;
         private string carBrand;
         private string carPlate;
         private string reservationStart;
         private string reservationEnd;
         private int prize;
+
+        public PaymentDetailViewModel()
+        {
+            Title = "";
+            SaveCommand = new Command(OnSave);
+        }
 
         public string CarBrand
         {
@@ -66,6 +73,21 @@ namespace Carceres_Android.ViewModels.Payments
                 await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie wczytano danych płatności", "ANULUJ");
             }
         }
-        
+
+        private async void OnSave()
+        {
+
+            var response = await PaymentsService.UpdatePaymentAsync(PaymentId);
+            if(response)
+            {
+                await Application.Current.MainPage.DisplayAlert("OK", "Opłacono", "OK");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się opłacić", "ANULUJ");
+            }
+
+        }
+
     }
 }

@@ -5,5 +5,9 @@
              Title="{Binding Title}">
     <StackLayout Spacing="20" Padding="15">
         <Label Text="{Binding Prize}"/>
+
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Opłać" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

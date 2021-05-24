@@ -12,5 +12,7 @@ namespace Carceres_Android.Services.Payments
         Task<List<T>> GetPaymentsAsync();
 
         Task<T> GetPaymentAsync(string id);
+
+        Task<bool> UpdatePaymentAsync(string id);
     }
 }
