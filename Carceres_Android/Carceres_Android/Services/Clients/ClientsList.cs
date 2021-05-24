@@ -42,8 +42,6 @@ namespace Carceres_Android.Services.Clients
                 var content = new StringContent(JsonConvert.SerializeObject(updatedClient), Encoding.UTF8, "application/json");
                 var responseMessage = await client.PutAsync(URL, content);
                 responseMessage.EnsureSuccessStatusCode();
-                var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
-                var response = JsonConvert.DeserializeObject<Models.Clients>(jsonResponse);
                 return await Task.FromResult(true);
 
             };

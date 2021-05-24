@@ -69,7 +69,7 @@ namespace Carceres_Android.ViewModels.Clients
             }
             catch (Exception)
             {
-                Debug.WriteLine("Failed to Load User");
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się załadować danych", "ANULUJ");
             }
         }
 
@@ -97,7 +97,15 @@ namespace Carceres_Android.ViewModels.Clients
                 phone = Phone
 
             };
-            await ClientService.UpdateClientAsync(updatedClient);
+            var response = await ClientService.UpdateClientAsync(updatedClient);
+            if (response)
+            {
+                await Application.Current.MainPage.DisplayAlert("OK", "Zaktualizowano dane", "OK");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się zaktualizować danych", "ANULUJ");
+            }
 
         }
     }

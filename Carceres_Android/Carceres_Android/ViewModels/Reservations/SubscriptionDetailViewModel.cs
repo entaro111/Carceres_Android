@@ -71,6 +71,7 @@ namespace Carceres_Android.ViewModels.Reservations
             catch (Exception)
             {
                 Debug.WriteLine("Failed to Load Subscription");
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się wczytać danych subskrypcji", "ANULUJ");
             }
         }
         

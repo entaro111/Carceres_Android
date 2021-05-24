@@ -63,6 +63,7 @@ namespace Carceres_Android.ViewModels.Payments
             catch (Exception)
             {
                 Debug.WriteLine("Failed to Load User");
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie wczytano danych płatności", "ANULUJ");
             }
         }
         

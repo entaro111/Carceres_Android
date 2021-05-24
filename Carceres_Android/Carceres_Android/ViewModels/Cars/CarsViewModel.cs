@@ -41,6 +41,7 @@ namespace Carceres_Android.ViewModels.Cars
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się wczytać samochodów", "ANULUJ");
             }
             finally
             {
@@ -68,7 +69,6 @@ namespace Carceres_Android.ViewModels.Cars
             if (car == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(CarDetailPage)}?{nameof(CarDetailViewModel.CarId)}={car.id}");
         }
 

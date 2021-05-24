@@ -8,7 +8,7 @@ namespace Carceres_Android.Services.Users
 {
     public interface IUsersList<T>
     {
-        Task<bool> UpdateUserAsync(T user);
+        Task<bool> UpdateUserAsync(string password);
         Task<T> GetUserAsync();
     }
 }

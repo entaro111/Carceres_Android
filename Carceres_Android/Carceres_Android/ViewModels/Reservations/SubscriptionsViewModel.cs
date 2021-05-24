@@ -44,6 +44,7 @@ namespace Carceres_Android.ViewModels.Reservations
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się wczytać rezerwacji", "ANULUJ");
             }
             finally
             {

@@ -71,6 +71,7 @@ namespace Carceres_Android.ViewModels.Cars
             catch (Exception)
             {
                 Debug.WriteLine("Failed to Load User");
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się wczytać samochodu", "ANULUJ");
             }
         }
 

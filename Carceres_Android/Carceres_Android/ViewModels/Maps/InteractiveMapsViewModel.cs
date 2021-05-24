@@ -78,6 +78,7 @@ namespace Carceres_Android.ViewModels.Maps
             }
             catch (Exception ex)
             {
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się załadować mapy", "ANULUJ");
                 Debug.WriteLine(ex);
             }
             finally

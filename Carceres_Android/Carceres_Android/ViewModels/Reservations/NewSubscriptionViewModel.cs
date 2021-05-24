@@ -89,8 +89,17 @@ namespace Carceres_Android.ViewModels.Reservations
                 place_id = Place.id,
                 end = End
             };
-            await SubscriptionsService.AddSubscriptionAsync(newSubscription);
-            await Shell.Current.GoToAsync("..");
+            var response = await SubscriptionsService.AddSubscriptionAsync(newSubscription);
+            if (response)
+            {
+                await Application.Current.MainPage.DisplayAlert("OK", "Dodano rezerwację", "OK");
+                await Shell.Current.GoToAsync("..");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się dodać rezerwacji", "ANULUJ");
+            }
+            
         }
 
 
@@ -112,6 +121,7 @@ namespace Carceres_Android.ViewModels.Reservations
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się wczytać samochodów", "ANULUJ");
             }
             finally
             {
@@ -131,7 +141,8 @@ namespace Carceres_Android.ViewModels.Reservations
 
                 foreach (var place in await task1)
                 {
-                    Places.Add(place);
+                    if(!place.occupied) Places.Add(place);
+
                 }
 
 
@@ -139,6 +150,7 @@ namespace Carceres_Android.ViewModels.Reservations
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się wczytać miejsc", "ANULUJ");
             }
             finally
             {

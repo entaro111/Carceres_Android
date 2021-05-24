@@ -25,8 +25,9 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <AbsoluteLayout HeightRequest="500" x:Name="test"  Background="Black" Margin="0,20,0,0">
-                <Image  Source="{Binding SelectedZone.bkg_file}" Aspect="AspectFit" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="WidthProportional,HeightProportional"/>
+            <AbsoluteLayout HeightRequest="500" x:Name="test"  Margin="0,20,0,0">
+                <Image  Source="{Binding SelectedZone.bkg_file}" Aspect="AspectFit" 
+                        AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="WidthProportional,HeightProportional"/>
             </AbsoluteLayout>
         </StackLayout>
     </RefreshView>

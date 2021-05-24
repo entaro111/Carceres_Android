@@ -7,10 +7,6 @@
              xmlns:model="clr-namespace:Carceres_Android.Models"  
              x:Name="BrowsePaymentsPage">
     
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Dodaj" Command="{Binding AddPaymentCommand}"/>
-    </ContentPage.ToolbarItems>
-
     <RefreshView x:DataType="local:PaymentsViewModel" Command="{Binding LoadPaymentsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name=" PaymentsListView" ItemsSource="{Binding Payments}" SelectedItem="None">
             <CollectionView.ItemTemplate>

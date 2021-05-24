@@ -44,6 +44,7 @@ namespace Carceres_Android.ViewModels.Payments
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie wczytano płatności", "ANULUJ");
             }
             finally
             {

@@ -46,7 +46,7 @@ namespace Carceres_Android.ViewModels
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("error", "Nieprawidłowe dane", "CANCEL");
+                        await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nieprawidłowe dane", "ANULUJ");
                     }
 
                 }

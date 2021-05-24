@@ -6,8 +6,14 @@
 
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Imię:" FontSize="Medium" />
-        <Label Text="{Binding Name}" FontSize="Small"/>
-
+        <Label Text="Stare hasło:" FontSize="Medium" />
+        <Entry Text="{Binding OldPassword}" FontSize="Small" IsPassword="True"/>
+        <Label Text="Nowe hasło:" FontSize="Medium" />
+        <Entry Text="{Binding NewPassword}" FontSize="Small" IsPassword="True"/>
+        <Label Text="Powtórz nowe hasło:" FontSize="Medium" />
+        <Entry Text="{Binding RetypedNewPassword}" FontSize="Small" IsPassword="True"/>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Zapisz" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
     </StackLayout>
 </ContentPage>
