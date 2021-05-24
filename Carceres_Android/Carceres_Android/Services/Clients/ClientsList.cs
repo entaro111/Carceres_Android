@@ -1,6 +1,7 @@
 ﻿using Carceres_Android.Services.API;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -31,6 +32,21 @@ namespace Carceres_Android.Services.Clients
                 }
             });
 
+        }
+
+        public async Task<bool> UpdateClientAsync(Models.Clients updatedClient)
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
+                var content = new StringContent(JsonConvert.SerializeObject(updatedClient), Encoding.UTF8, "application/json");
+                var responseMessage = await client.PutAsync(URL, content);
+                responseMessage.EnsureSuccessStatusCode();
+                var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
+                var response = JsonConvert.DeserializeObject<Models.Clients>(jsonResponse);
+                return await Task.FromResult(true);
+
+            };
         }
 
     }

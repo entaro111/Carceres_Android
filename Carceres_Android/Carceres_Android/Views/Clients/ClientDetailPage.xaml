@@ -6,8 +6,18 @@
 
     <StackLayout Spacing="20" Padding="15">
         <Label Text="Imię:" FontSize="Medium" />
-        <Label Text="{Binding Name}" FontSize="Small"/>
+        <Entry Text="{Binding Name}" FontSize="Small"/>
         <Label Text="Nazwisko:" FontSize="Medium" />
-        <Label Text="{Binding Surname}" FontSize="Small"/>
+        <Entry Text="{Binding Surname}" FontSize="Small"/>
+        <Label Text="Adres:" FontSize="Medium" />
+        <Entry Text="{Binding Address}" FontSize="Small"/>
+        <Label Text="Miasto:" FontSize="Medium" />
+        <Entry Text="{Binding City}" FontSize="Small"/>
+        <Label Text="Telefon:" FontSize="Medium" />
+        <Entry Text="{Binding Phone}" FontSize="Small"/>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+            <Button Text="Zapisz" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

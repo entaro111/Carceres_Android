@@ -15,7 +15,7 @@ namespace Carceres_Android.ViewModels.Maps
         private Zone _selectedZone;
         public ObservableCollection<Zone> Zones { get; }
         public Command LoadZonesCommand { get; }
-        public AbsoluteLayout absl  = new AbsoluteLayout();
+        public AbsoluteLayout absl = new AbsoluteLayout();
 
         private int _all;
         private int _free;
@@ -27,18 +27,18 @@ namespace Carceres_Android.ViewModels.Maps
             Zones = new ObservableCollection<Zone>();
             LoadZonesCommand = new Command(ExecuteLoadZonesCommand);
         }
-      
+
         public Zone SelectedZone
         {
             get => _selectedZone;
             set
             {
-                if(_selectedZone != value)
+                if (_selectedZone != value)
                 {
                     SetProperty(ref _selectedZone, value);
                     OnPropertyChanged();
                 }
-                
+
             }
         }
 
@@ -104,22 +104,27 @@ namespace Carceres_Android.ViewModels.Maps
         public void UpdatePins()
         {
             absl.Children.Clear();
-            foreach (var place in SelectedZone.places)
+            if (SelectedZone != null)
             {
                 
-                RelativeLayout rel = new RelativeLayout();
-                Image image = new Image();
-                if(place.occupied) image.Source = "pin_blue.png";
-                else image.Source = "pin_green.png";
-                rel.Children.Add(image, Constraint.Constant(place.pos_x*4.8), Constraint.Constant(place.pos_y*4.9));
-                absl.Children.Add(rel);
+                foreach (var place in SelectedZone.places)
+                {
+
+                    RelativeLayout rel = new RelativeLayout();
+                    Image image = new Image();
+                    if (place.occupied) image.Source = "pin_blue.png";
+                    else image.Source = "pin_green.png";
+                    rel.Children.Add(image, Constraint.Constant(place.pos_x * 4.8), Constraint.Constant(place.pos_y * 4.9));
+                    absl.Children.Add(rel);
+                }
             }
+          
         }
 
         public void OnAppearing()
         {
             IsBusy = true;
-  
+
         }
     }
 }

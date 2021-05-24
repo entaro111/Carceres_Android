@@ -1,13 +1,11 @@
-﻿using Carceres_Android.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Carceres_Android.Services.Clients
 {
     public interface IClientsList<T>
     {
         Task<T> GetClientAsync();
+
+        Task<bool> UpdateClientAsync(Models.Clients client);
     }
 }

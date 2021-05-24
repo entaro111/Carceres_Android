@@ -13,11 +13,21 @@ namespace Carceres_Android.ViewModels.Clients
         {
             Title = "Klient";
             Task.Run(async () => await LoadClient());
+            SaveCommand = new Command(OnSave, ValidateState);
+            CancelCommand = new Command(OnCancel);
+            this.PropertyChanged +=
+                (_, __) => SaveCommand.ChangeCanExecute();
         }
+
+        public Command SaveCommand { get; }
+
+        public Command CancelCommand { get; }
 
         private string name;
         private string surname;
-
+        private string address;
+        private string city;
+        private string phone;
 
         public string Name
         {
@@ -30,6 +40,21 @@ namespace Carceres_Android.ViewModels.Clients
             get => surname;
             set => SetProperty(ref surname, value);
         }
+        public string Address
+        {
+            get => address;
+            set => SetProperty(ref address, value);
+        }
+        public string City
+        {
+            get => city;
+            set => SetProperty(ref city, value);
+        }
+        public string Phone
+        {
+            get => phone;
+            set => SetProperty(ref phone, value);
+        }
 
         public async Task LoadClient()
         {
@@ -38,11 +63,42 @@ namespace Carceres_Android.ViewModels.Clients
                 var client = await ClientService.GetClientAsync();
                 Name = client.name;
                 Surname = client.surname;
+                Address = client.address;
+                City = client.city;
+                Phone = client.phone;
             }
             catch (Exception)
             {
                 Debug.WriteLine("Failed to Load User");
             }
+        }
+
+        private bool ValidateState()
+        {
+            return !String.IsNullOrWhiteSpace(name) && !String.IsNullOrWhiteSpace(surname);
+        }
+
+        public async void OnCancel()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
+
+        private async void OnSave()
+        {
+
+
+            Models.Clients updatedClient = new Models.Clients()
+            {
+
+                name = Name,
+                surname = Surname,
+                address = Address,
+                city = City,
+                phone = Phone
+
+            };
+            await ClientService.UpdateClientAsync(updatedClient);
+
         }
     }
 

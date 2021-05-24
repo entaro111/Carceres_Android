@@ -24,9 +24,9 @@
                         <Span Text="{Binding Occupied}" FontSize="16" FontAttributes="Bold"/>
                     </FormattedString>
                 </Label.FormattedText>
-            </Label> 
-            <AbsoluteLayout x:Name="test" HorizontalOptions="Center">
-                <Image Source="{Binding SelectedZone.bkg_file}" Margin="0,20,0,0"/>
+            </Label>
+            <AbsoluteLayout HeightRequest="500" x:Name="test"  Background="Black" Margin="0,20,0,0">
+                <Image  Source="{Binding SelectedZone.bkg_file}" Aspect="AspectFit" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="WidthProportional,HeightProportional"/>
             </AbsoluteLayout>
         </StackLayout>
     </RefreshView>
