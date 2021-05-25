@@ -24,6 +24,11 @@ namespace Carceres_Android.Views.Reservations
             BindingContext = _viewModel = new NewSubscriptionViewModel();
             
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
+        }
 
         private void CarSelectedChanged(object sender, EventArgs e)
         {

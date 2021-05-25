@@ -24,7 +24,7 @@ namespace Carceres_Android.ViewModels.Payments
 
         public PaymentDetailViewModel()
         {
-            Title = "";
+            Title = "Szczegóły płatności";
             SaveCommand = new Command(OnSave, ValidateState);
             this.PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
         }

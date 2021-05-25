@@ -6,19 +6,30 @@
              xmlns:model="clr-namespace:Carceres_Android.Models" 
              Shell.PresentationMode="ModalAnimated"
              Title="Nowa rezerwacja">
-    
-    <ContentPage.Content>
-        <StackLayout x:DataType="local:NewSubscriptionViewModel" Spacing="3" Padding="15">
+    <ContentPage.Resources>
+        <Style x:Key="PickerTextStyle" TargetType="Picker">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        <Style x:Key="DateTimeTextStyle" TargetType="DatePicker">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <RefreshView x:DataType="local:NewSubscriptionViewModel" Command="{Binding LoadDataCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <StackLayout x:DataType="local:NewSubscriptionViewModel" Spacing="30" Padding="15">
             <Picker x:Name="CarPicker" Title="Wybierz samochód" ItemsSource="{Binding Cars}" ItemDisplayBinding="{Binding plate}" 
-                    HorizontalTextAlignment="Center" SelectedIndexChanged="CarSelectedChanged"/>
-            <Picker x:Name="PlacePicker" Title="Wybierz miejsce" ItemsSource="{Binding Places}" HorizontalTextAlignment="Center" 
-                    ItemDisplayBinding="{Binding id, StringFormat='Miejsce numer {0}'}" SelectedIndexChanged="PlaceSelectedChanged"/>
-            <DatePicker x:Name="DatePicker" Format="MMMM dd,yyyy" DateSelected="DateSelectedChanged" />
+                    SelectedIndexChanged="CarSelectedChanged" Style="{StaticResource PickerTextStyle}"/>
+            <Picker x:Name="PlacePicker" Title="Wybierz miejsce" ItemsSource="{Binding Places}" 
+                    ItemDisplayBinding="{Binding id, StringFormat='Miejsce numer {0}'}" SelectedIndexChanged="PlaceSelectedChanged"
+                    Style="{StaticResource PickerTextStyle}"/>
+            <DatePicker x:Name="DatePicker" Format="dd MMMM yyyy" DateSelected="DateSelectedChanged" Style="{StaticResource DateTimeTextStyle}"/>
 
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+    </RefreshView>
 </ContentPage>

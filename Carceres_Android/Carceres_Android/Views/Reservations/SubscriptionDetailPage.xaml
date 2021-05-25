@@ -2,10 +2,60 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Carceres_Android.Views.Reservations.SubscriptionDetailPage"
+             xmlns:convs="clr-namespace:Carceres_Android.ViewModels"
              Title="{Binding Title}">
+    
+    <ContentPage.Resources>
+        <convs:PaymentValueConverter x:Key="CashConverter"/>
+        <convs:PaymentBoolConverter x:Key="PaidConverter"/>
+        <Style x:Key="LabelTextStyle" TargetType="Span">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+    </ContentPage.Resources>
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Start:" FontSize="Medium" />
-        <Label Text="{Binding Start}" FontSize="Small"/>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Miejsce: " FontSize="16"/>
+                    <Span Text="{Binding ZoneName}" Style="{StaticResource LabelTextStyle}"/>
+                    <Span Text="/" Style="{StaticResource LabelTextStyle}"/>
+                    <Span Text="{Binding PlaceNr}" Style="{StaticResource LabelTextStyle}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Samochód: " FontSize="16"/>
+                    <Span Text="{Binding CarBrand}" Style="{StaticResource LabelTextStyle}"/>
+                    <Span Text="{Binding CarPlate}" Style="{StaticResource LabelTextStyle}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Data rozpoczęcia: " FontSize="16"/>
+                    <Span Text="{Binding ReservationStart, StringFormat='{0:dd MMMM yyyy HH:mm}'}" Style="{StaticResource LabelTextStyle}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Data zakończenia: " FontSize="16"/>
+                    <Span Text="{Binding ReservationEnd, StringFormat='{0:dd MMMM yyyy HH:mm}'}" Style="{StaticResource LabelTextStyle}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding Paid, Converter={StaticResource PaidConverter}}" Style="{StaticResource LabelTextStyle}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
     </StackLayout>
 </ContentPage>

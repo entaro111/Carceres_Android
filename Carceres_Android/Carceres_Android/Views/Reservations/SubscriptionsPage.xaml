@@ -4,14 +4,21 @@
              x:Class="Carceres_Android.Views.Reservations.SubscriptionsPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Carceres_Android.ViewModels.Reservations"
+             xmlns:convs="clr-namespace:Carceres_Android.ViewModels"
              xmlns:model="clr-namespace:Carceres_Android.Models"  
              x:Name="BrowseReservationPage">
     <ContentPage.Resources>
-        <Style x:Key="ListItemLabelStyle" TargetType="Label">
+        <convs:PaymentValueConverter x:Key="CashConverter"/>
+        <convs:PaymentBoolConverter x:Key="PaidConverter"/>
+        <convs:PaymentBoolToColorConverter x:Key="ColorConverter"/>
+        <Style x:Key="ListItemStyle" TargetType="Span">
             <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        <Style x:Key="ListItemSpanStyle" TargetType="Span" BasedOn="{StaticResource ListItemStyle}">
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
-        <Style x:Key="ListItemDetailLabelStyle" TargetType="Label">
+        <Style x:Key="ListItemDetailSpanStyle" TargetType="Span" BasedOn="{StaticResource ListItemStyle}">
             <Setter Property="FontSize" Value="14"/>
         </Style>
     </ContentPage.Resources>
@@ -23,12 +30,36 @@
         <CollectionView x:Name=" ReservationsListView" ItemsSource="{Binding Subscriptions}" SelectedItem="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Margin="0,5,0,0" x:DataType="model:Subscription">
-                        <BoxView HeightRequest="5" BackgroundColor="Gray"/>
-                        <Label Text="{Binding start, StringFormat='Data rozpoczęcia: {0:dd MMMM yyyy HH:mm}'}" LineBreakMode="NoWrap" 
-                               Style="{StaticResource ListItemLabelStyle}"/>
-                        <Label Text="{Binding end, StringFormat='Data zakończenia: {0:dd MMMM yyyy HH:mm}'}" LineBreakMode="NoWrap" 
-                               Style="{StaticResource ListItemDetailLabelStyle}"/>
+                    <StackLayout Margin="0,5,0,0" x:DataType="model:Subscription" BackgroundColor="{Binding payment.paid, Converter={StaticResource ColorConverter}}">
+                        <BoxView HeightRequest="5" BackgroundColor="White"/>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Miejsce: " FontSize="16"/>
+                                    <Span Text="{Binding place.nr}" Style="{StaticResource ListItemSpanStyle}"/>
+                                    <Span Text='            ' FontSize="16"/>
+                                    <Span Text="Samochód: " FontSize="16"/>
+                                    <Span Text="{Binding car.brand}" Style="{StaticResource ListItemSpanStyle}"/>
+                                    <Span Text="{Binding car.plate}" Style="{StaticResource ListItemSpanStyle}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Data rozpoczęcia: " FontSize="16"/>
+                                    <Span Text="{Binding start, StringFormat='{0:dd MMMM yyyy HH:mm}'}" Style="{StaticResource ListItemSpanStyle}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Data zakończenia: " FontSize="16"/>
+                                    <Span Text="{Binding end, StringFormat='{0:dd MMMM yyyy HH:mm}'}" Style="{StaticResource ListItemSpanStyle}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1"
                                                   Command="{Binding Source={RelativeSource AncestorType=

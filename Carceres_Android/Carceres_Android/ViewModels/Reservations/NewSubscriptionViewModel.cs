@@ -15,6 +15,7 @@ namespace Carceres_Android.ViewModels.Reservations
 
         public ObservableCollection<Places> Places { get; }
         public ObservableCollection<Car> Cars { get; }
+        public Command LoadDataCommand { get; }
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
@@ -25,10 +26,45 @@ namespace Carceres_Android.ViewModels.Reservations
             SaveCommand = new Command(OnSave, ValidateState);
             CancelCommand = new Command(OnCancel);
             this.PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
-            Task.Run(async () => await LoadCars());
-            Task.Run(async () => await LoadPlaces());
-        }
+            LoadDataCommand =  new Command(ExecuteLoadDataCommand);
 
+        }
+        private async void ExecuteLoadDataCommand(object obj)
+        {
+            IsBusy = true;
+            try
+            {
+
+                Cars.Clear();
+
+                var task1 = CarsService.GetCarsAsync();
+                var task2 = PlacesService.GetPlacesAsync();
+                foreach (var car in await task1)
+                {
+                    Cars.Add(car);
+                }
+                foreach (var place in await task2)
+                {
+                    if (!place.occupied) Places.Add(place);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie udało się wczytać samochodów", "ANULUJ");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        public void OnAppearing()
+        {
+            IsBusy = true;
+
+        }
         public Places Place
         {
             get => place;
@@ -112,11 +148,17 @@ namespace Carceres_Android.ViewModels.Reservations
                 Cars.Clear();
 
                 var task1 = CarsService.GetCarsAsync();
-
+                var task2 = PlacesService.GetPlacesAsync();
                 foreach (var car in await task1)
                 {
                     Cars.Add(car);
                 }
+                foreach (var place in await task2)
+                {
+                    if (!place.occupied) Places.Add(place);
+
+                }
+
             }
             catch (Exception ex)
             {
@@ -131,7 +173,7 @@ namespace Carceres_Android.ViewModels.Reservations
 
         public async Task LoadPlaces()
         {
-            IsBusy = true;
+
             try
             {
 
