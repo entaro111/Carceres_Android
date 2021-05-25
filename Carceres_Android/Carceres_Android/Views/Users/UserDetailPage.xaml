@@ -3,15 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Carceres_Android.Views.Users.UserDetailPage"
              Title="{Binding Title}">
-
+    <ContentPage.Resources>
+        <Style x:Key="LabelTextStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        <Style x:Key="EntryTextStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="IsPassword" Value="True"/>
+        </Style>
+    </ContentPage.Resources>
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Stare hasło:" FontSize="Medium" />
-        <Entry Text="{Binding OldPassword}" FontSize="Small" IsPassword="True"/>
-        <Label Text="Nowe hasło:" FontSize="Medium" />
-        <Entry Text="{Binding NewPassword}" FontSize="Small" IsPassword="True"/>
-        <Label Text="Powtórz nowe hasło:" FontSize="Medium" />
-        <Entry Text="{Binding RetypedNewPassword}" FontSize="Small" IsPassword="True"/>
+        <Label Text="Stare hasło:" Style="{StaticResource LabelTextStyle}" />
+        <Entry Text="{Binding OldPassword}" Style="{StaticResource EntryTextStyle}"/>
+        <Label Text="Nowe hasło:" Style="{StaticResource LabelTextStyle}" />
+        <Entry Text="{Binding NewPassword}" Style="{StaticResource EntryTextStyle}"/>
+        <Label Text="Powtórz nowe hasło:" Style="{StaticResource LabelTextStyle}" />
+        <Entry Text="{Binding RetypedNewPassword}" Style="{StaticResource EntryTextStyle}"/>
         <StackLayout Orientation="Horizontal">
             <Button Text="Zapisz" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
         </StackLayout>

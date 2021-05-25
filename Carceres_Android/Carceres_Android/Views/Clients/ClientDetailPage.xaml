@@ -3,20 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Carceres_Android.Views.Clients.ClientDetailPage"
              Title="{Binding Title}">
+    
+    <ContentPage.Resources>
+        <Style x:Key="LabelTextStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        <Style x:Key="EntryTextStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+    </ContentPage.Resources>
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Imię:" FontSize="Medium" />
-        <Entry Text="{Binding Name}" FontSize="Small"/>
-        <Label Text="Nazwisko:" FontSize="Medium" />
-        <Entry Text="{Binding Surname}" FontSize="Small"/>
-        <Label Text="Adres:" FontSize="Medium" />
-        <Entry Text="{Binding Address}" FontSize="Small"/>
-        <Label Text="Miasto:" FontSize="Medium" />
-        <Entry Text="{Binding City}" FontSize="Small"/>
-        <Label Text="Telefon:" FontSize="Medium" />
-        <Entry Text="{Binding Phone}" FontSize="Small"/>
+        <Label Text="Imię:" Style="{StaticResource LabelTextStyle}" />
+        <Entry Text="{Binding Name}" Style="{StaticResource EntryTextStyle}"/>
+        <Label Text="Nazwisko:" Style="{StaticResource LabelTextStyle}"/>
+        <Entry Text="{Binding Surname}" Style="{StaticResource EntryTextStyle}"/>
+        <Label Text="Adres:" Style="{StaticResource LabelTextStyle}"/>
+        <Entry Text="{Binding Address}" Style="{StaticResource EntryTextStyle}"/>
+        <Label Text="Miasto:" Style="{StaticResource LabelTextStyle}" />
+        <Entry Text="{Binding City}" Style="{StaticResource EntryTextStyle}"/>
+        <Label Text="Telefon:" Style="{StaticResource LabelTextStyle}" />
+        <Entry Text="{Binding Phone}" Style="{StaticResource EntryTextStyle}"/>
         <StackLayout Orientation="Horizontal">
-            <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
             <Button Text="Zapisz" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
         </StackLayout>
     </StackLayout>

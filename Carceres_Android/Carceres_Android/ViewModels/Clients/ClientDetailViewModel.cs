@@ -14,7 +14,6 @@ namespace Carceres_Android.ViewModels.Clients
             Title = "Klient";
             Task.Run(async () => await LoadClient());
             SaveCommand = new Command(OnSave, ValidateState);
-            CancelCommand = new Command(OnCancel);
             this.PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
         }
@@ -78,18 +77,11 @@ namespace Carceres_Android.ViewModels.Clients
             return !String.IsNullOrWhiteSpace(name) && !String.IsNullOrWhiteSpace(surname);
         }
 
-        public async void OnCancel()
-        {
-            await Shell.Current.GoToAsync("..");
-        }
-
         private async void OnSave()
         {
 
-
             Models.Clients updatedClient = new Models.Clients()
             {
-
                 name = Name,
                 surname = Surname,
                 address = Address,

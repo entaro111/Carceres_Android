@@ -17,7 +17,6 @@ namespace Carceres_Android
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(UserDetailPage), typeof(UserDetailPage));
-            Routing.RegisterRoute(nameof(CarDetailPage), typeof(CarDetailPage));
             Routing.RegisterRoute(nameof(ClientDetailPage), typeof(ClientDetailPage));
             Routing.RegisterRoute(nameof(PaymentDetailPage), typeof(PaymentDetailPage));
             Routing.RegisterRoute(nameof(SubscriptionDetailPage), typeof(SubscriptionDetailPage));

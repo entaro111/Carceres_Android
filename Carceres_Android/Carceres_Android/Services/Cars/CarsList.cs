@@ -26,7 +26,7 @@ namespace Carceres_Android.Services.Cars
             {
                 using (var client = new HttpClient())
                 {
-                    string URL1 = "http://10.0.2.2:43343/api/cars/" + id;
+                    string URL1 = "http://10.0.2.2:43343/api/client/cars/" + id;
                     client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
                     var responseMessage = await client.GetAsync(URL1);
                     responseMessage.EnsureSuccessStatusCode();

@@ -7,21 +7,45 @@
              xmlns:model="clr-namespace:Carceres_Android.Models"  
              x:Name="BrowseCarsPage">
 
+    <ContentPage.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="Padding" Value="10,0,0,0"/>
+        </Style>
+        <Style x:Key="ListItemStyle" TargetType="Span">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        <Style x:Key="ListItemSpanStyle" TargetType="Span" BasedOn="{StaticResource ListItemStyle}">
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        <Style x:Key="ListItemDetailSpanStyle" TargetType="Span" BasedOn="{StaticResource ListItemStyle}">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </ContentPage.Resources>
+    
     <RefreshView x:DataType="local:CarsViewModel" Command="{Binding LoadCarsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <CollectionView x:Name=" CarsListView" ItemsSource="{Binding Cars}" SelectedItem="None">
+        <CollectionView x:Name=" CarsListView" ItemsSource="{Binding Cars}" SelectedItem="None" >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Car">
-                        <Label Text="{Binding plate}" LineBreakMode="NoWrap" 
-                               Style="{DynamicResource ListItemTextStyle}" FontSize="20" FontAttributes="Bold"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                  Command="{Binding Source={RelativeSource AncestorType=
-                                {x:Type local:CarsViewModel}}, Path=CarTapped}" 
-                                                  CommandParameter="{Binding .}">
-
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
+                    <StackLayout Padding="0,10,0,0" x:DataType="model:Car">
+                        
+                        <Label Style="{StaticResource LabelStyle}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Marka: " Style="{StaticResource ListItemStyle}" />
+                                    <Span Text="{Binding brand}" Style="{StaticResource ListItemSpanStyle}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Style="{StaticResource LabelStyle}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Rejestracja: " Style="{StaticResource ListItemStyle}" />
+                                    <Span Text="{Binding plate}" Style="{StaticResource ListItemSpanStyle}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <BoxView HeightRequest="5" BackgroundColor="Gray"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

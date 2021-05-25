@@ -10,17 +10,14 @@ namespace Carceres_Android.ViewModels.Cars
 {
     public class CarsViewModel : BaseViewModel
     {
-        private Car _selectedCar;
         public ObservableCollection<Car> Cars { get; }
         public Command LoadCarsCommand { get; }
-        public Command<Car> CarTapped { get; }
 
         public CarsViewModel()
         {
-            Title = "Samochody";
+            Title = "Samochody klienta";
             Cars = new ObservableCollection<Car>();
             LoadCarsCommand = new Command(ExecuteLoadCarsCommand);
-            CarTapped = new Command<Car>(OnCarSelected);
         }
 
         private async void ExecuteLoadCarsCommand(object obj)
@@ -51,25 +48,6 @@ namespace Carceres_Android.ViewModels.Cars
         public void OnAppearing()
         {
             IsBusy = true;
-            SelectedCar = null;
-        }
-
-        public Car SelectedCar
-        {
-            get => _selectedCar;
-            set
-            {
-                SetProperty(ref _selectedCar, value);
-                OnCarSelected(value);
-            }
-        }
-
-        async void OnCarSelected(Car car)
-        {
-            if (car == null)
-                return;
-
-            await Shell.Current.GoToAsync($"{nameof(CarDetailPage)}?{nameof(CarDetailViewModel.CarId)}={car.id}");
         }
 
     }
