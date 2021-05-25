@@ -6,14 +6,14 @@ using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Payments
 {
-    public class PaymentValueConverter : IValueConverter
+    public class PaymentBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-
-            if (targetType != typeof(string)) throw new NotImplementedException();
-            var grosze = Int32.Parse(value.ToString());
-            return String.Format("{0:C}", (double)grosze / 100);
+            var text = "";
+            if ((bool)value == true) text = "Opłacono";
+            else text = "Nieopłacono";
+            return text;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

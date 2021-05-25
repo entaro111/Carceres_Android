@@ -9,12 +9,7 @@ namespace Carceres_Android.Models
         public Zone() { }
         public int id { get; set; }
         public string name { get; set; }
-
         public string bkg_file { get; set; }
-
         public List<Places> places { get; set; }
-
-
-        //public Uri uri = new Uri("place");
     }
 }

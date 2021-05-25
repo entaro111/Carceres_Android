@@ -2,9 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Carceres_Android.Views.Payments.PaymentDetailPage"
+             xmlns:local="clr-namespace:Carceres_Android.ViewModels.Payments"
              Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <local:PaymentValueConverter x:Key="CashConverter"/>
+        <local:PaymentBoolConverter x:Key="PaidConverter"/>
+    </ContentPage.Resources>
+    
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding Prize}"/>
+        <Label>
+            <Label.Text>
+                <MultiBinding StringFormat="{}Miejsce: {0}/{1}">
+                    <Binding Path="ZoneName" />
+                    <Binding Path="PlaceNr" />
+                </MultiBinding>
+            </Label.Text>
+        </Label>
+        <Label>
+            <Label.Text>
+                <MultiBinding StringFormat="{}Samochód: {0} {1}">
+                    <Binding Path="CarBrand" />
+                    <Binding Path="CarPlate" />
+                </MultiBinding>
+            </Label.Text>
+        </Label>
+        <Label Text="{Binding Prize, Converter={StaticResource CashConverter} ,StringFormat='Kwota: {0}'}"/>
+        <Label Text="{Binding ReservationStart, StringFormat='Data rozpoczęcia: {0:dd MMMM yyyy HH:mm}'}"/>
+        <Label Text="{Binding ReservationEnd, StringFormat='Data zakończenia: {0:dd MMMM yyyy HH:mm}'}"/>
+        <Label Text="{Binding Paid, Converter={StaticResource PaidConverter}}"/>
 
         <StackLayout Orientation="Horizontal">
             <Button Text="Opłać" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>

@@ -54,5 +54,22 @@ namespace Carceres_Android.Services.Maps
                 return info;
             }
         }
+
+        public Task<Zone> GetZoneAsync(string id)
+        {
+            return RestService.ExecuteWithRetryAsync(async () =>
+            {
+                using (var client = new HttpClient())
+                {
+                    string URL1 = "http://10.0.2.2:43343/api/zones/" + id;
+                    client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
+                    var responseMessage = await client.GetAsync(URL1);
+                    responseMessage.EnsureSuccessStatusCode();
+                    var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
+                    var response = JsonConvert.DeserializeObject<Zone>(jsonResponse);
+                    return response;
+                }
+            });
+        }
     }
 }
