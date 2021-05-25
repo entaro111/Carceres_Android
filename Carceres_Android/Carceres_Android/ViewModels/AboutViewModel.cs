@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Users
@@ -59,13 +60,13 @@ namespace Carceres_Android.ViewModels.Users
                 Name = user.client.name;
                 Surname = user.client.surname;
                 UserType = user.user_type;
-
+                Preferences.Set("usertype", true);
                 if (Name != null) Greeting = "Witaj " + Name + "!";
-                else Greeting = "Witaj nieznajomy";
             }
             catch (Exception)
             {
-                Debug.WriteLine("Failed to Load User");
+                Preferences.Set("usertype", false);
+                Greeting = "Witaj nieznajomy";
             }
             finally
             {

@@ -9,13 +9,15 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Carceres_Android.Services.Reservations
 {
     public class SubscriptionsList : ISubscriptionsList<Subscription>
     {
-        private const string URL = "http://10.0.2.2:43343/api/client/subscriptions";
+        private string URL => Preferences.Get("apiurl", string.Empty);
+
         public IRestService RestService => DependencyService.Get<IRestService>();
         public SubscriptionsList()
         {
@@ -27,9 +29,9 @@ namespace Carceres_Android.Services.Reservations
             {
                 using (var client = new HttpClient())
                 {
-
+                    string endpoint = "client/subscriptions";
                     client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
-                    var responseMessage = await client.GetAsync(URL);
+                    var responseMessage = await client.GetAsync(URL+endpoint);
                     responseMessage.EnsureSuccessStatusCode();
                     var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
                     dynamic response = JsonConvert.DeserializeObject(jsonResponse);
@@ -46,26 +48,24 @@ namespace Carceres_Android.Services.Reservations
             {
                 using (var client = new HttpClient())
                 {
-                    string URL1 = "http://10.0.2.2:43343/api/client/subscriptions/" + id;
+                    string endpoint = "client/subscriptions/" + id;
                     client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
-                    var responseMessage = await client.GetAsync(URL1);
+                    var responseMessage = await client.GetAsync(URL+endpoint);
                     responseMessage.EnsureSuccessStatusCode();
                     var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
                     var response = JsonConvert.DeserializeObject<Subscription>(jsonResponse);
                     return response;
                 }
             });
-        }
-
-        
+        }   
         public async Task<bool> AddSubscriptionAsync(Subscription subscription)
         {
             using (var client = new HttpClient())
             {
-                string URL = "http://10.0.2.2:43343/api/client/subscriptions";
+                string endpoint = "client/subscriptions";
                 client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
                 var content = new StringContent(JsonConvert.SerializeObject(subscription), Encoding.UTF8, "application/json");
-                var responseMessage = await client.PostAsync(URL,content);
+                var responseMessage = await client.PostAsync(URL+endpoint,content);
                 responseMessage.EnsureSuccessStatusCode();
                 var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
                 var response = JsonConvert.DeserializeObject<Subscription>(jsonResponse);

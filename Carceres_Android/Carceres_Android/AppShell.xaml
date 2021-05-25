@@ -11,7 +11,7 @@
        Title="Carceres_Android"
        x:Class="Carceres_Android.AppShell"
        FlyoutBackgroundColor="{StaticResource Primary}">
-
+    
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -77,8 +77,8 @@
         <ShellContent Route="InteractiveMapPage" ContentTemplate="{DataTemplate localMap:InteractiveMap}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Samochody">
-        <ShellContent Route="CarsPage" ContentTemplate="{DataTemplate localCars:CarsPage}" />
+    <FlyoutItem Title="Samochody" >
+        <ShellContent Route="CarsPage"  ContentTemplate="{DataTemplate localCars:CarsPage}"/>
     </FlyoutItem>
 
     <FlyoutItem Title="Dane użytkownika">
