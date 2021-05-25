@@ -4,16 +4,16 @@ using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
-namespace Carceres_Android.ViewModels.Payments
+namespace Carceres_Android.ViewModels
 {
-    public class PaymentBoolConverter : IValueConverter
+    public class PaymentValueConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var text = "";
-            if ((bool)value == true) text = "Opłacono";
-            else text = "Nieopłacono";
-            return text;
+
+            if (targetType != typeof(string)) throw new NotImplementedException();
+            var grosze = Int32.Parse(value.ToString());
+            return String.Format("{0:C}", (double)grosze / 100);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

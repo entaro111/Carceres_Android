@@ -4,21 +4,54 @@
              x:Class="Carceres_Android.Views.Payments.PaymentsPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Carceres_Android.ViewModels.Payments"
+             xmlns:convs="clr-namespace:Carceres_Android.ViewModels"
              xmlns:model="clr-namespace:Carceres_Android.Models"  
              x:Name="BrowsePaymentsPage">
     <ContentPage.Resources>
-        <local:PaymentValueConverter x:Key="CashConverter"/>
+        <convs:PaymentValueConverter x:Key="CashConverter"/>
+        <convs:PaymentBoolConverter x:Key="PaidConverter"/>
+        <convs:PaymentBoolToColorConverter x:Key="ColorConverter"/>
+        <Style x:Key="ListItemStyle" TargetType="Span">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        <Style x:Key="ListItemSpanStyle" TargetType="Span" BasedOn="{StaticResource ListItemStyle}">
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        <Style x:Key="ListItemDetailSpanStyle" TargetType="Span" BasedOn="{StaticResource ListItemStyle}">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
     </ContentPage.Resources>
     
     <RefreshView x:DataType="local:PaymentsViewModel" Command="{Binding LoadPaymentsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name=" PaymentsListView" ItemsSource="{Binding Payments}" SelectedItem="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Payment">
-                        <Label Text="{Binding sale_date, StringFormat='{0:dd MMMM yyyy HH:mm}'}" LineBreakMode="NoWrap" 
-                               Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                        <Label Text="{Binding value, Converter={StaticResource CashConverter}}" LineBreakMode="NoWrap" 
-                               Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13"/>
+                    <StackLayout Margin="0,5,0,0" x:DataType="model:Payment" BackgroundColor="{Binding paid, Converter={StaticResource ColorConverter}}">
+                        <BoxView HeightRequest="5" BackgroundColor="White"/>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Data rozpoczęcia: " Style="{StaticResource ListItemStyle}" />
+                                    <Span Text="{Binding sale_date, StringFormat='{0:dd MMMM yyyy HH:mm}'}" Style="{StaticResource ListItemSpanStyle}"/>
+                                </FormattedString> 
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Kwota: " Style="{StaticResource ListItemDetailSpanStyle}"/>
+                                    <Span Text="{Binding value, Converter={StaticResource CashConverter}}" Style="{StaticResource ListItemDetailSpanStyle}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding paid, Converter={StaticResource PaidConverter}}" Style="{StaticResource ListItemDetailSpanStyle}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1"
                                                   Command="{Binding Source={RelativeSource AncestorType=

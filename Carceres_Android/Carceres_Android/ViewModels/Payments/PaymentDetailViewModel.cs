@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Carceres_Android.ViewModels.Payments
@@ -99,7 +100,6 @@ namespace Carceres_Android.ViewModels.Payments
             }
             catch (Exception)
             {
-                Debug.WriteLine("Failed to Load User");
                 await Application.Current.MainPage.DisplayAlert("BŁĄD", "Nie wczytano danych płatności", "ANULUJ");
             }
         }
@@ -111,6 +111,7 @@ namespace Carceres_Android.ViewModels.Payments
             if(response)
             {
                 await Application.Current.MainPage.DisplayAlert("OK", "Opłacono", "OK");
+                await Shell.Current.GoToAsync("..");
             }
             else
             {

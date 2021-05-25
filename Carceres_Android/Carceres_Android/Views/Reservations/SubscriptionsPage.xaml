@@ -6,7 +6,15 @@
              xmlns:local="clr-namespace:Carceres_Android.ViewModels.Reservations"
              xmlns:model="clr-namespace:Carceres_Android.Models"  
              x:Name="BrowseReservationPage">
-
+    <ContentPage.Resources>
+        <Style x:Key="ListItemLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        <Style x:Key="ListItemDetailLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Dodaj" Command="{Binding AddSubscriptionCommand}"/>
     </ContentPage.ToolbarItems>
@@ -15,11 +23,12 @@
         <CollectionView x:Name=" ReservationsListView" ItemsSource="{Binding Subscriptions}" SelectedItem="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Subscription">
-                        <Label Text="{Binding start}" LineBreakMode="NoWrap" 
-                               Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                        <Label Text="{Binding end}" LineBreakMode="NoWrap" 
-                               Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13"/>
+                    <StackLayout Margin="0,5,0,0" x:DataType="model:Subscription">
+                        <BoxView HeightRequest="5" BackgroundColor="Gray"/>
+                        <Label Text="{Binding start, StringFormat='Data rozpoczęcia: {0:dd MMMM yyyy HH:mm}'}" LineBreakMode="NoWrap" 
+                               Style="{StaticResource ListItemLabelStyle}"/>
+                        <Label Text="{Binding end, StringFormat='Data zakończenia: {0:dd MMMM yyyy HH:mm}'}" LineBreakMode="NoWrap" 
+                               Style="{StaticResource ListItemDetailLabelStyle}"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1"
                                                   Command="{Binding Source={RelativeSource AncestorType=
