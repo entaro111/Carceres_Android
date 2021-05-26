@@ -12,8 +12,8 @@ namespace Carceres_Android.ViewModels
         {
 
             if ((bool)value == true) return Color.LightGreen;
-            else return Color.IndianRed;
-
+            else return Color.FromRgba(255,10,10,100);
+            
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -2,34 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Carceres_Android.Views.AboutPage"
-             xmlns:local="clr-namespace:Carceres_Android.ViewModels.Users"
-             xmlns:model="clr-namespace:Carceres_Android.Models"
              Title="{Binding Title}">
-    <!--
-    <ContentPage.BindingContext>
-        <vm:AboutViewModel />
-    </ContentPage.BindingContext>
 
--->
-
-
-
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-80,0,0">
-        <Label x:Name="Greeting" Text="{Binding Greeting}" FontSize="50" TextColor="Black"/>
-        <StackLayout HorizontalOptions="Center">
-                <Label Text="Carceres" TextColor="Black" FontSize="50" />
-            </StackLayout>
-        <Label Text="System zarządzania parkingiem strzeżonym" FontSize="20"/>
-    </StackLayout>
-
-    <!--
-    <RefreshView x:DataType="local:AboutViewModel"
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-80,0,0">
-        <StackLayout HorizontalOptions="Center">
-            <Label Text="Carceres" TextColor="Black" FontSize="50" />
+    <StackLayout HorizontalOptions="Center">
+        <Image Source="logo_carceres.png" VerticalOptions="Center" Margin="0,80,0,60"/>
+        <StackLayout>
+            <Label Text="Carceres" TextColor="Black" FontSize="50" HorizontalOptions="Center"/>
+            <Label Text="System zarządzania parkingiem strzeżonym" FontSize="20" HorizontalTextAlignment="Center"/>
+            <Label x:Name="Greeting" Text="{Binding Greeting}" HorizontalOptions="Center" FontSize="30" TextColor="Black" Margin="0,30,0,0"/>
         </StackLayout>
-        <Label Text="System zarządzania parkingiem strzeżonym" FontSize="20"/>
-        <StackLayout x:Name="Greeting"/>
     </StackLayout>
-    -->
 </ContentPage>

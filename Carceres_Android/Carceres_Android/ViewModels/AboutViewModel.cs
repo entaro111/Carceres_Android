@@ -60,12 +60,10 @@ namespace Carceres_Android.ViewModels.Users
                 Name = user.client.name;
                 Surname = user.client.surname;
                 UserType = user.user_type;
-                Preferences.Set("usertype", true);
                 if (Name != null) Greeting = "Witaj " + Name + "!";
             }
             catch (Exception)
             {
-                Preferences.Set("usertype", false);
                 Greeting = "Witaj nieznajomy";
             }
             finally

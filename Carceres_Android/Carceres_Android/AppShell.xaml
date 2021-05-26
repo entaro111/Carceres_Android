@@ -77,7 +77,7 @@
         <ShellContent Route="InteractiveMapPage" ContentTemplate="{DataTemplate localMap:InteractiveMap}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Samochody" >
+    <FlyoutItem Title="Samochody">
         <ShellContent Route="CarsPage"  ContentTemplate="{DataTemplate localCars:CarsPage}"/>
     </FlyoutItem>
 
@@ -88,11 +88,11 @@
     <FlyoutItem Title="Dane klienta">
         <ShellContent Route="ClientsPage" ContentTemplate="{DataTemplate localClients:ClientDetailPage}" />
     </FlyoutItem>
-    
+
     <FlyoutItem Title="Moje rezerwacje">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate localReservations:SubscriptionsPage}" />
     </FlyoutItem>
-        
+
     <FlyoutItem Title="Moje płatności">
         <ShellContent Route="Payments" ContentTemplate="{DataTemplate localPayments:PaymentsPage}" />
     </FlyoutItem>

@@ -62,7 +62,7 @@ namespace Carceres_Android.Services.Payments
         {
             using (var client = new HttpClient())
             {
-                string endpoint = "client/payments" + id;
+                string endpoint = "client/payments/" + id;
                 client.DefaultRequestHeaders.Add("x-access-tokens", RestService.accessToken);
                 var responseMessage = await client.PutAsync(URL + endpoint,null);
                 responseMessage.EnsureSuccessStatusCode();

@@ -42,6 +42,7 @@ namespace Carceres_Android.ViewModels
 
                     if (response.Success)
                     {
+                        
                         await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                     }
                     else
