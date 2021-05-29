@@ -81,10 +81,6 @@
         <ShellContent Route="CarsPage"  ContentTemplate="{DataTemplate localCars:CarsPage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Dane użytkownika">
-        <ShellContent Route="UserPage" ContentTemplate="{DataTemplate localUsers:UserDetailPage}" />
-    </FlyoutItem>
-
     <FlyoutItem Title="Dane klienta">
         <ShellContent Route="ClientsPage" ContentTemplate="{DataTemplate localClients:ClientDetailPage}" />
     </FlyoutItem>
@@ -97,6 +93,9 @@
         <ShellContent Route="Payments" ContentTemplate="{DataTemplate localPayments:PaymentsPage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="Zmiana hasła">
+        <ShellContent Route="UserPage" ContentTemplate="{DataTemplate localUsers:UserDetailPage}" />
+    </FlyoutItem>
 
     <MenuItem Text="Zaloguj" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
     </MenuItem>

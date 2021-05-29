@@ -13,7 +13,7 @@ namespace Carceres_Android.ViewModels.Users
     {
         public UserDetailViewModel()
         {
-            Title = "Użytkownik";
+            Title = "Zmiana hasła";
             Task.Run(async () => await LoadUser());
             SaveCommand = new Command(OnSave, ValidateState);
             this.PropertyChanged +=
